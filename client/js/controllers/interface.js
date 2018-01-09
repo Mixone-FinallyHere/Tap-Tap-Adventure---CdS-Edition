@@ -2,8 +2,8 @@
 
 define(['jquery', '../interface/inventory',
         '../interface/profile/profile', '../interface/actions',
-        '../interface/bank', '../interface/enchant', '../interface/warp'],
-    function($, Inventory, Profile, Actions, Bank, Enchant, Warp) {
+        '../interface/bank', '../interface/enchant', '../interface/warp', '../interface/shop'],
+    function($, Inventory, Profile, Actions, Bank, Enchant, Warp, Shop) {
 
     return Class.extend({
 
@@ -22,10 +22,12 @@ define(['jquery', '../interface/inventory',
             self.profile = null;
             self.actions = null;
             self.enchant = null;
+            self.shop = null;
 
             self.loadNotifications();
             self.loadActions();
             self.loadWarp();
+            self.loadShop();
 
             self.done.click(function() {
                 self.hideNotify();
@@ -46,6 +48,9 @@ define(['jquery', '../interface/inventory',
 
             if (self.enchant)
                 self.enchant.resize();
+
+            if (self.shop)
+                self.shop.resize();
 
         },
 
@@ -105,6 +110,13 @@ define(['jquery', '../interface/inventory',
                 self.warp = new Warp(self.game, self);
         },
 
+        loadShop: function() {
+            var self = this;
+
+            if (!self.shop)
+                self.shop = new Shop(self.game);
+        },
+
         loadNotifications: function() {
             var self = this,
                 ok = $('#ok'),
@@ -160,6 +172,9 @@ define(['jquery', '../interface/inventory',
 
             if (self.warp && self.warp.isVisible())
                 self.warp.hide();
+
+            if (self.shop && self.shop.isVisible())
+                self.shop.hide();
         },
 
         displayNotify: function(message) {

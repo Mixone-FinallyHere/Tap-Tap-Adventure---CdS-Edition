@@ -160,7 +160,10 @@ module.exports = Parser = cls.Class.extend({
                 id: value.npcId,
                 items: value.items,
                 count: value.count,
-                prices: value.prices
+                originalCount: value.count,
+                prices: value.prices,
+                currency: value.currency,
+                stockDuration: value.stockDuration
             };
 
             Shops.Ids[value.npcId] = Shops.Data[key];

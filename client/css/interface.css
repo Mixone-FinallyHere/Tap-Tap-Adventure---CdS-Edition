@@ -453,6 +453,16 @@
     position: absolute;
 }
 
+#shop {
+    top: 50%;
+    right: 50%;
+}
+
+#shopInventoryContainer {
+    top: 50%;
+    right: 30%;
+}
+
 @media only screen and (min-width: 1501px) {
 
     #buttons {
@@ -1586,6 +1596,23 @@
     #warp1.active, #warp2.active, #warp3.active, #warp4.active, #warp5.active, #warp6.active {
         background-position-y: -80px;
         -ms-background-position-y: -80px;
+    }
+
+    #shop {
+        width: 342px;
+        height: 380px;
+        background: url("../img/2/containers.png") 258px 0;
+    }
+
+    #shopContainer {
+        width: 80%;
+        height: 60%;
+        left: 10%;
+    }
+
+    #shopInventoryContainer {
+        width: 258px;
+        height: 310px;
     }
 
 }
