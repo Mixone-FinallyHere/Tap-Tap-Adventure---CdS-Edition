@@ -1087,7 +1087,8 @@ define(['./renderer/renderer', './utils/storage',
 
                     case Packets.ShopOpcode.Refresh:
 
-
+                        if (self.interface.shop.isShopOpen(info.id))
+                            self.interface.shop.update(info);
 
                         break;
                 }

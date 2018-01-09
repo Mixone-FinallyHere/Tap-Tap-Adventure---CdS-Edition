@@ -137,6 +137,7 @@ module.exports = World = cls.Class.extend({
             self.dataParser();
 
         self.crypto = new Crypto(self);
+        self.shops = new Shops(self);
 
         self.ready = true;
 

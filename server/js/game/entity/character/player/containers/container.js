@@ -182,12 +182,19 @@ module.exports = Container = cls.Class.extend({
         return null;
     },
 
-    contains: function(id) {
+    contains: function(id, count) {
         var self = this;
 
-        for (var i = 0; i < self.slots.length; i++)
-            if (self.slots[i].id === id)
-                return true;
+        for (var i = 0; i < self.slots.length; i++) {
+            var slot = self.slots[i];
+
+            if (slot.id === id)
+                if (count)
+                    if (slot.count >= count)
+                        return true;
+                else
+                    return true;
+        }
 
         return false;
     },

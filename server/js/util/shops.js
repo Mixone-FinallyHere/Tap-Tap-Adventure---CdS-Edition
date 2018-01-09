@@ -16,6 +16,44 @@ Shops.getItemCount = function(id) {
     return Shops.getItems(id).length;
 };
 
+Shops.increment = function(shopId, itemId, count) {
+    var shop = Shops.Ids[shopId],
+        index = shop.items.indexOf(itemId);
+
+    if (index < 0)
+        return;
+
+    /**
+     * Before y'all start complaining about why I didn't simplify this,
+     * remember.... Pointersssssssss
+     */
+
+    var shopData = Shops.Data[shop.key];
+
+    shopData.count[index] += count;
+
+};
+
+Shops.decrement = function(shopId, itemId, count) {
+    var shop = Shops.Ids[shopId],
+        index = shop.items.indexOf(itemId);
+
+    if (index < 0)
+        return;
+
+    /**
+     * Before y'all start complaining about why I didn't simplify this,
+     * remember.... Pointersssssssss
+     */
+
+    var shopData = Shops.Data[shop.key];
+
+    shopData.count[index] -= count;
+
+    if (shopData.count[index] < 0)
+        shopData.count[index] = 0;
+};
+
 Shops.getCost = function(shopId, itemId, count) {
     /**
      * Reason for the shopId variable is because some shops
@@ -26,10 +64,32 @@ Shops.getCost = function(shopId, itemId, count) {
     var shop = Shops.Ids[shopId],
         index = shop.items.indexOf(itemId);
 
-    if (!index)
+    if (index < 0)
         return;
 
     return shop.prices[index] * count;
+};
+
+Shops.getStock = function(shopId, itemId) {
+
+    var shop = Shops.Ids[shopId],
+        index = shop.items.indexOf(itemId);
+
+    if (index < 0)
+        return;
+
+    return shop.count[index];
+};
+
+Shops.getOriginalStock = function(shopId, itemId) {
+
+    var shop = Shops.Ids[shopId],
+        index = shop.index.indexOf(itemId);
+
+    if (index < 0)
+        return;
+
+    return shop.originalCount[index];
 };
 
 Shops.getCount = function(id) {
@@ -44,6 +104,5 @@ Shops.getCount = function(id) {
 
     return counts;
 };
-
 
 module.exports = Shops;
