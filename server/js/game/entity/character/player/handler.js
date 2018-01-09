@@ -6,7 +6,8 @@ var cls = require('../../../../lib/class'),
     Packets = require('../../../../network/packets'),
     Npcs = require('../../../../util/npcs'),
     Formulas = require('../../../formulas'),
-    Modules = require('../../../../util/modules');
+    Modules = require('../../../../util/modules'),
+    Shops = require('../../../../util/shops');
 
 module.exports = Handler = cls.Class.extend({
 
@@ -83,6 +84,13 @@ module.exports = Handler = cls.Class.extend({
 
                 return;
             }
+
+            if (Shops.isShopNPC(npc.id)) {
+                self.world.open(self.player, npc.id);
+
+                return;
+            }
+
 
             switch(Npcs.getType(npc.id)) {
                 case 'banker':

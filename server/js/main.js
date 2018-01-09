@@ -54,10 +54,12 @@ function Main() {
     });
 
     setTimeout(function() {
+
+        loadParser();
+
         for (var i = 0; i < config.worlds; i++)
             worlds.push(new World(i + 1, webSocket, database));
 
-        loadParser();
         initializeWorlds();
 
     }, 200);
