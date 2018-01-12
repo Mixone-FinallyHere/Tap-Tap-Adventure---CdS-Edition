@@ -22,6 +22,26 @@ define(['jquery', './container/container'], function($, Container) {
 
         },
 
+        resize: function() {
+            var self = this,
+                list = self.getShopList().find('li');
+
+            for (var i = 0; i < list.length; i++) {
+                var item = $(list[i]).find('#shopItemImage' + i),
+                    slot = self.containers.slots[i];
+
+                if (!slot.string) {
+                    log.error('Couldn\'nt find string for slot at index: ' + i);
+                    continue;
+                }
+
+                if (self.game.app.isMobile())
+                    item.css('background-size', '600%');
+                else
+                    item.css('background-image', self.container.getImageFormat(self.getScale(), slot.string))
+            }
+        },
+
         update: function(data) {
             var self = this;
 
@@ -30,12 +50,27 @@ define(['jquery', './container/container'], function($, Container) {
             self.container = new Container(data.strings.length);
 
             for (var i = 0; i < self.container.size; i++) {
-                var shopItem = $('<div id="shopItem"' + i + ' class="shopItem"></div>'),
+                var shopItem = $('<div id="shopItem' + i + '" class="shopItem"></div>'),
                     string = data.strings[i],
                     name = data.names[i],
-                    count = data.counts[i];
+                    count = data.counts[i],
+                    itemImage, itemCount, itemName;
 
+                if (!string || !name || !count)
+                    continue;
 
+                itemImage = $('<div id="shopItemImage' + i + '" class="shopItemImage"></div>');
+                itemCount = $('<div id="shopItemCount' + i + '" class="shopItemCount"></div>');
+                itemName = $('<div id="shopItemName' + i + '" class=shopItemName></div>')
+
+                itemImage.css('background-image', self.container.getImageFormat(self.getScale(), string));
+                itemCount.html(count);
+                itemName.html(name);
+
+                self.container.setSlot(i, {
+                    string: string,
+                    count: count
+                });
 
             }
         },
@@ -69,6 +104,10 @@ define(['jquery', './container/container'], function($, Container) {
             self.openShop = -1;
 
             self.body.fadeOut('fast');
+        },
+
+        getScale: function() {
+            return this.game.renderer.getDrawingScale();
         },
 
         isVisible: function() {

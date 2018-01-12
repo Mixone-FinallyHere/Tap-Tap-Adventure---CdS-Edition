@@ -21,11 +21,11 @@ var Character = require('../character'),
     Bank = require('./containers/bank/bank'),
     config = require('../../../../../config.json'),
     Enchant = require('./enchant/enchant'),
-    Guild = require('./guild'),
     Utils = require('../../../../util/utils'),
     Hit = require('../combat/hit'),
     Trade = require('./trade'),
-    Warp = require('./warp');
+    Warp = require('./warp'),
+    Guild = require('./guild');
 
 module.exports = Player = Character.extend({
 
@@ -114,7 +114,7 @@ module.exports = Player = Character.extend({
         self.setRing(ring[0], ring[1], ring[2], ring[3]);
         self.setBoots(boots[0], boots[1], boots[2], boots[3]);
 
-        self.guild = new Guild(data.guild, self);
+        self.guild = new Guild(self, null);
     },
 
     loadInventory: function() {
@@ -641,6 +641,10 @@ module.exports = Player = Character.extend({
 
     hasSpecialAttack: function() {
         return this.weapon && (this.weapon.hasCritical() || this.weapon.hasExplosive() || this.weapon.hasStun());
+    },
+
+    hasGuild: function() {
+
     },
 
     canBeStunned: function() {

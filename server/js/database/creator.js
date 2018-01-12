@@ -62,6 +62,7 @@ module.exports = Creator = cls.Class.extend({
                 'lastLogin varchar(64),' +
                 'guild varchar(64),' +
                 'lastWarp varchar(64),' +
+                'guildName varchar(64),' +
                 'PRIMARY KEY(username))', handleError('player_data'));
         });
 
