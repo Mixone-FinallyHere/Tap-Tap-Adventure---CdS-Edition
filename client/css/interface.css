@@ -925,7 +925,7 @@
         width: 48px;
         height: 48px;
     }
-    
+
     .questName {
         -webkit-border-radius: 12px;
         -moz-border-radius: 12px;
@@ -1613,6 +1613,35 @@
     #shopInventoryContainer {
         width: 258px;
         height: 310px;
+    }
+
+    .shopItem {
+        width: 80%;
+        height: 20px;
+        border: 3px solid #373737;
+    }
+
+    .shopItemImage {
+        width: 32px;
+        height: 32px;
+        boreder: 1px solid #373737;
+    }
+
+    .shopItemName {
+        position: absolute;
+        left: 30%;
+        width: 30px;
+        height 100%;
+        font-size: 12px;
+    }
+
+    .shopItemCount {
+        position: absolute;
+        float: left;
+        left: 50%;
+        width: 30px;
+        height: 100%;
+        font-size: 12px;
     }
 
 }

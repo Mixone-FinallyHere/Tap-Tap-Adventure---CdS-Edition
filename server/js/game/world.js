@@ -21,7 +21,8 @@ var cls = require('../lib/class'),
     Modules = require('../util/modules'),
     Minigames = require('../controllers/minigames'),
     Crypto = require('../util/crypto'),
-    Shops = require('../controllers/shops');
+    Shops = require('../controllers/shops'),
+    Guilds = require('../controllers/guilds');
 
 module.exports = World = cls.Class.extend({
 
@@ -138,6 +139,7 @@ module.exports = World = cls.Class.extend({
 
         self.crypto = new Crypto(self);
         self.shops = new Shops(self);
+        self.guilds = new Guilds(self);
 
         self.ready = true;
 
@@ -419,6 +421,17 @@ module.exports = World = cls.Class.extend({
         });
 
         player.recentGroups = [];
+    },
+
+    pushToNameArray: function(array, message) {
+        var self = this;
+
+        _.each(array, function(name) {
+            var player = self.getPlayerByName(name);
+
+            if (player)
+                self.pushToPlayer(player, message);
+        });
     },
 
     addToGroup: function(entity, groupId) {
