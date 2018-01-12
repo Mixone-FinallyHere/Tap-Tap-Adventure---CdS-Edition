@@ -145,7 +145,8 @@ Packets.GuildOpcode = {
     Join: 1,
     Leave: 2,
     Rank: 3,
-    Loot: 4
+    Loot: 4,
+    Update: 5
 };
 
 Packets.PointerOpcode = {
