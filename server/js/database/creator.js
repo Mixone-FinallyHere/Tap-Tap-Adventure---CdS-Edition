@@ -128,6 +128,7 @@ module.exports = Creator = cls.Class.extend({
                 'ipban int(64),' +
                 'PRIMARY KEY(ip))', handleError('ipbans'))
         });
+        
     },
 
     save: function(player) {

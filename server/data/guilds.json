@@ -1,9 +1,1 @@
-{
-  "theguild": {
-      "name": "The GUiLd",
-      "owner": "Tachyon",
-      "members": ["Test"],
-      "ranks": [0],
-      "key": "theguild"
-  }
-}
+{"theguild":{"name":"The Guild","owner":"tachyon","members":["test"],"rank":[0]}}

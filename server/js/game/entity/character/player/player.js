@@ -258,6 +258,9 @@ module.exports = Player = Character.extend({
          * Passed from the superclass...
          */
 
+        if (!self.hitPoints || !self.mana)
+            return;
+
         self.hitPoints.heal(amount);
         self.mana.heal(amount);
 

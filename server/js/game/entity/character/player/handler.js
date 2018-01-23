@@ -86,11 +86,9 @@ module.exports = Handler = cls.Class.extend({
             }
 
             if (Shops.isShopNPC(npc.id)) {
-                self.world.open(self.player, npc.id);
-
+                self.world.shops.open(self.player, npc.id);
                 return;
             }
-
 
             switch(Npcs.getType(npc.id)) {
                 case 'banker':

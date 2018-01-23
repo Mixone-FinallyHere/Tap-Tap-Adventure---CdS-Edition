@@ -165,13 +165,6 @@ function Main() {
 
     });
 
-    var testObjets = {
-        "test": 1,
-        "TTeeSt": 2
-    };
-
-    log.info('TeSt' in testObjets);
-
 }
 
 

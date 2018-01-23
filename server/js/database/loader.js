@@ -12,7 +12,7 @@ module.exports = Loader = cls.Class.extend({
 
     getInventory: function(player, callback) {
         var self = this;
-        
+
         self.mysql.connection.query('SELECT * FROM `player_inventory` WHERE `player_inventory`.`username`=?', [player.username], function(error, rows, fields) {
             var info = rows.shift();
 
