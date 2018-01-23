@@ -15,20 +15,26 @@ module.exports = Guild = cls.Class.extend({
     join: function() {
         var self = this;
 
+        if (self.data && self.data.name)
+            self.leave();
+
 
     },
 
     leave: function() {
         var self = this;
 
-        if (self.data === null) {
+        if (!self.data) {
             self.player.notify('You are not in a guild.');
             return;
         }
 
-        self.getController().remove(self.player, self.data.string)
+        self.getController().remove(self.player, self.data.string);
 
         self.data = null;
+
+        self.player.send(new Messages.Guild(Packets.GuildOpcode.Leave));
+        
     },
 
     /*
