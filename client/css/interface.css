@@ -454,13 +454,16 @@
 }
 
 #shop {
-    top: 50%;
-    right: 50%;
+    position: absolute;
+    display: none;
+    top: 17%;
+    left: 50%;
 }
 
 #shopInventoryContainer {
-    top: 50%;
-    right: 30%;
+    position: absolute;
+    top: 0;
+    right: 100%;
 }
 
 @media only screen and (min-width: 1501px) {
@@ -1599,9 +1602,9 @@
     }
 
     #shop {
-        width: 342px;
-        height: 380px;
-        background: url("../img/2/containers.png") 258px 0;
+        width: 340px;
+        height: 336px;
+        background: url("../img/2/containers.png") -258px -44px;;
     }
 
     #shopContainer {
@@ -1613,6 +1616,7 @@
     #shopInventoryContainer {
         width: 258px;
         height: 310px;
+        background: url("../img/2/containers.png") 0 0;;
     }
 
     .shopItem {
