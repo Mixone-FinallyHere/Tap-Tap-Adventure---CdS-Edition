@@ -87,7 +87,7 @@ define(['jquery', './container/container'], function($, Container) {
             self.getInventoryList().empty();
         },
 
-        show: function(id) {
+        open: function(id) {
             var self = this;
 
             if (!id)

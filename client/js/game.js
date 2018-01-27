@@ -1071,9 +1071,15 @@ define(['./renderer/renderer', './utils/storage',
             });
 
             self.messages.onShop(function(opcode, info) {
+                var shopData = info.shopData;
 
                 switch (opcode) {
                     case Packets.ShopOpcode.Open:
+
+                        log.info(info);
+
+                        self.interface.shop.open(shopData.id);
+                        self.interface.shop.update(shopData);
 
                         break;
 
@@ -1211,7 +1217,7 @@ define(['./renderer/renderer', './utils/storage',
 
             if (ignores)
                 self.pathfinder.clearIgnores();
-            
+
             return path;
         },
 
