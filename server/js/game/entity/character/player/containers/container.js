@@ -56,12 +56,12 @@ module.exports = Container = cls.Class.extend({
 
     add: function(id, count, ability, abilityLevel) {
         var self = this;
-        
+
         //log.info('Trying to pickup ' + count + ' x ' + id);
         var maxStackSize = Items.maxStackSize(id)  === -1 ? Constants.MAX_STACK : Items.maxStackSize(id);
-            
+
         //log.info('Max stack size = ' + maxStackSize);
-            
+
         if (!id || count < 0 || count > maxStackSize )
             return null;
 
@@ -154,12 +154,12 @@ module.exports = Container = cls.Class.extend({
     },
 
     remove: function(index, id, count) {
-        var self = this;
+        /**
+         * Perform item validity prior to calling the method.
+         */
 
-        if (!id || count < 0 || !self.contains(id) || !self.slots[index] || self.slots[index].id === -1 || self.slots[index].id !== id)
-            return false;
-
-        var slot = self.slots[index];
+        var self = this,
+            slot = self.slots[index];
 
         if (Items.isStackable(id)) {
             if (count >= slot.count)
@@ -188,7 +188,7 @@ module.exports = Container = cls.Class.extend({
         for (var i = 0; i < self.slots.length; i++) {
             var slot = self.slots[i];
 
-            if (slot.id === id)
+            if (slot.id == id)
                 if (count)
                     if (slot.count >= count)
                         return true;

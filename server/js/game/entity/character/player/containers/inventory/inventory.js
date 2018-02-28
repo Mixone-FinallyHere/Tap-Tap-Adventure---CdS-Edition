@@ -58,8 +58,12 @@ module.exports = Inventory = Container.extend({
         if (!index)
             index = self.getIndex(id);
 
+        log.info('passed1');
+
         if (!self._super(index, id, count))
             return;
+
+        log.info('passed2')
 
         self.owner.send(new Messages.Inventory(Packets.InventoryOpcode.Remove, {
             index: parseInt(index),
