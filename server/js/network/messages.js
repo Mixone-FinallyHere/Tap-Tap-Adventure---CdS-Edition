@@ -83,7 +83,7 @@ Messages.Movement = Message.extend({
     },
 
     serialize: function() {
-        return [Packets.Movement, [this.opcode, this.data]];
+        return [Packets.Movement, this.opcode, this.data];
     }
 });
 
@@ -127,6 +127,7 @@ Messages.Animation = Message.extend({
 
 });
 
+// TODO - Revise this when going over combat.
 Messages.Combat = Message.extend({
 
     init: function(opcode, attackerId, targetId, hitData) {
@@ -137,7 +138,7 @@ Messages.Combat = Message.extend({
     },
 
     serialize: function() {
-        return [Packets.Combat, [this.opcode, this.attackerId, this.targetId, this.hitData]];
+        return [Packets.Combat, this.opcode, this.attackerId, this.targetId, this.hitData];
     }
 
 });
@@ -414,6 +415,19 @@ Messages.PVP = Message.extend({
 });
 
 Messages.Shop = Message.extend({
+
+    init: function(opcode, info) {
+        this.opcode = opcode;
+        this.info = info;
+    },
+
+    serialize: function() {
+        return [Packets.Shop, this.opcode, this.info];
+    }
+
+});
+
+Messages.Minigame = Message.extend({
 
     init: function(opcode, info) {
         this.opcode = opcode;

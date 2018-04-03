@@ -53,6 +53,7 @@ module.exports = Player = Character.extend({
         self.newGroup = false;
 
         self.cryptoInterval = null;
+        self.team = null;
 
         self.disconnectTimeout = null;
         self.timeoutDuration = 1000 * 60 * 10; //10 minutes
@@ -72,7 +73,6 @@ module.exports = Player = Character.extend({
         self.acceptedTrade = false;
         self.invincible = false;
         self.noDamage = false;
-
         self.isGuest = false;
 
         self.pvp = false;
