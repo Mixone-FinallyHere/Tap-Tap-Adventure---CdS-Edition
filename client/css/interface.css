@@ -272,7 +272,7 @@
 .inventorySlots {
     position: absolute;
     top: 13%;
-    left: 6%;
+    left: 14%;
 }
 
 #enchantInventorySlots {
@@ -464,6 +464,14 @@
     position: absolute;
     top: 0;
     right: 100%;
+}
+
+#shopContainer {
+    position: absolute;
+    top: 8%;
+    width: 85%;
+    height: 80%;
+    left: 8%;
 }
 
 @media only screen and (min-width: 1501px) {
@@ -1607,12 +1615,6 @@
         background: url("../img/2/containers.png") -258px -44px;;
     }
 
-    #shopContainer {
-        width: 80%;
-        height: 60%;
-        left: 10%;
-    }
-
     #shopInventoryContainer {
         width: 258px;
         height: 310px;
@@ -1628,14 +1630,14 @@
     .shopItemImage {
         width: 32px;
         height: 32px;
-        boreder: 1px solid #373737;
+        border: 1px solid #373737;
     }
 
     .shopItemName {
         position: absolute;
         left: 30%;
         width: 30px;
-        height 100%;
+        height: 100%;
         font-size: 12px;
     }
 

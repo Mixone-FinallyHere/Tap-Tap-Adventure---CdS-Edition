@@ -347,9 +347,7 @@ define(['./renderer/renderer', './utils/storage',
                 self.interface.profile.update();
             });
 
-            self.messages.onMovement(function(data) {
-                var opcode = data.shift(),
-                    info = data.shift();
+            self.messages.onMovement(function(opcode, info) {
 
                 switch(opcode) {
                     case Packets.MovementOpcode.Move:

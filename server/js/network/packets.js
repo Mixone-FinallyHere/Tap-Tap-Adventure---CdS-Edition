@@ -41,7 +41,8 @@ var Packets = {
     Click: 39,
     Warp: 40,
     Crypto: 41,
-    Shop: 42
+    Shop: 42,
+    Minigame: 43
 };
 
 Packets.IntroOpcode = {

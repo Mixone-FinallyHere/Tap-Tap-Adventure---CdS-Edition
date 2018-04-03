@@ -114,7 +114,7 @@ define(['jquery', '../interface/inventory',
             var self = this;
 
             if (!self.shop)
-                self.shop = new Shop(self.game);
+                self.shop = new Shop(self.game, self);
         },
 
         loadNotifications: function() {

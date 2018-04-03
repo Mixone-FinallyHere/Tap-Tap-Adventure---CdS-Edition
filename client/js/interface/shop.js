@@ -2,7 +2,7 @@ define(['jquery', './container/container'], function($, Container) {
 
     return Class.extend({
 
-        init: function(game) {
+        init: function(game, intrface) {
             var self = this;
 
             self.game = game;
@@ -12,6 +12,7 @@ define(['jquery', './container/container'], function($, Container) {
             self.inventory = $('#shopInventorySlots');
 
             self.player = game.player;
+            self.interface = intrface;
 
             self.container = null;
 
@@ -61,7 +62,7 @@ define(['jquery', './container/container'], function($, Container) {
 
                 itemImage = $('<div id="shopItemImage' + i + '" class="shopItemImage"></div>');
                 itemCount = $('<div id="shopItemCount' + i + '" class="shopItemCount"></div>');
-                itemName = $('<div id="shopItemName' + i + '" class=shopItemName></div>')
+                itemName = $('<div id="shopItemName' + i + '" class=shopItemName></div>');
 
                 itemImage.css('background-image', self.container.getImageFormat(self.getScale(), string));
                 itemCount.html(count);
@@ -72,6 +73,19 @@ define(['jquery', './container/container'], function($, Container) {
                     count: count
                 });
 
+                shopItem.append(itemImage, itemCount, itemName);
+
+                self.getShopList().append(shopItem);
+            }
+
+            var inventoryItems = self.interface.bank.getInventoryList(),
+                inventorySize = self.interface.inventory.getSize();
+
+            for (var j = 0; j < inventorySize; j++) {
+                var item = $(inventoryItems[j]).clone(),
+                    slot = item.find('#bankInventorySlot' + j);
+
+                self.getInventoryList().append(slot);
             }
         },
 
