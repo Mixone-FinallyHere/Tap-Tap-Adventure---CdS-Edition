@@ -4,6 +4,8 @@ define(['jquery', '../page'], function($, Page) {
 
     return Class.extend({
 
+        //TODO - Hide crpyto mining option on mobiles and completely disable it.
+
         init: function(game) {
             var self = this;
 
@@ -160,18 +162,20 @@ define(['jquery', '../page'], function($, Page) {
                 self.setName(!active);
             });
 
-            self.cryptoCheck.click(function() {
-                var active = self.cryptoCheck.hasClass('active');
+            if (!self.renderer.mobile) {
+                self.cryptoCheck.click(function() {
+                    var active = self.cryptoCheck.hasClass('active');
 
-                self.cryptoCheck.toggleClass('active');
-                self.setCrypto(!active);
+                    self.cryptoCheck.toggleClass('active');
+                    self.setCrypto(!active);
 
-                if (active)
-                    self.game.crypto.stop();
-                else
-                    self.game.loadCrypto();
+                    if (active)
+                        self.game.crypto.stop();
+                    else
+                        self.game.loadCrypto();
 
-            });
+                });
+            }
 
             if (self.getSound())
                 self.soundCheck.addClass('active');

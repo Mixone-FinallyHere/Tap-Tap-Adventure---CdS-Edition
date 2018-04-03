@@ -197,10 +197,11 @@ define(function() {
 
         receiveMovement: function(data) {
             var self = this,
-                movementData = data.shift();
+                opcode = data.shift(),
+                info = data.shift();
 
             if (self.movementCallback)
-                self.movementCallback(movementData);
+                self.movementCallback(opcode, info);
         },
 
         receiveTeleport: function(data) {
@@ -218,7 +219,7 @@ define(function() {
             if (self.despawnCallback)
                 self.despawnCallback(id);
         },
-
+        
         receiveCombat: function(data) {
             var self = this,
                 combatData = data.shift();
