@@ -23,13 +23,26 @@ define(['jquery', './container/container'], function($, Container) {
 
         },
 
+        buy: function(event) {
+            var self = this,
+                id = event.currentTarget.id.substring(11);
+
+            self.game.socket.send(Packets.Shop, [Packets.ShopOpcode.Buy, id]);
+        },
+
+        sell: function() {
+            var self = this;
+
+
+        },
+
         resize: function() {
             var self = this,
                 list = self.getShopList().find('li');
 
             for (var i = 0; i < list.length; i++) {
                 var item = $(list[i]).find('#shopItemImage' + i),
-                    slot = self.containers.slots[i];
+                    slot = self.container.slots[i];
 
                 if (!slot.string) {
                     log.error('Couldn\'nt find string for slot at index: ' + i);
@@ -55,14 +68,15 @@ define(['jquery', './container/container'], function($, Container) {
                     string = data.strings[i],
                     name = data.names[i],
                     count = data.counts[i],
-                    itemImage, itemCount, itemName;
+                    itemImage, itemCount, itemName, itemBuy;
 
                 if (!string || !name || !count)
                     continue;
 
                 itemImage = $('<div id="shopItemImage' + i + '" class="shopItemImage"></div>');
                 itemCount = $('<div id="shopItemCount' + i + '" class="shopItemCount"></div>');
-                itemName = $('<div id="shopItemName' + i + '" class=shopItemName></div>');
+                itemName = $('<div id="shopItemName' + i + '" class="shopItemName"></div>');
+                itemBuy = $('<div id="shopItemBuy' + i + '" class="shopItemBuy"></div>');
 
                 itemImage.css('background-image', self.container.getImageFormat(self.getScale(), string));
                 itemCount.html(count);
@@ -73,9 +87,18 @@ define(['jquery', './container/container'], function($, Container) {
                     count: count
                 });
 
+                // Bind the itemBuy to the local buy function.
+                itemBuy.click(function(event) {
+                    self.buy(event);
+                });
+
+                var listItem = $('<li></li>');
+
                 shopItem.append(itemImage, itemCount, itemName);
 
-                self.getShopList().append(shopItem);
+                listItem.append(shopItem);
+
+                self.getShopList().append(listItem);
             }
 
             var inventoryItems = self.interface.bank.getInventoryList(),
