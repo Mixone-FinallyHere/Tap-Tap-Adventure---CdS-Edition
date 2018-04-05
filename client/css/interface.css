@@ -468,10 +468,54 @@
 
 #shopContainer {
     position: absolute;
+    font-family: 'AdvoCut', sans-serif;
     top: 8%;
     width: 85%;
     height: 80%;
     left: 8%;
+}
+
+#shopContainer ul li {
+    padding-bottom: 5px;
+}
+
+.shopItem {
+    display: inline-flex;
+    width: 98%;
+    height: 5%;
+    border: 3px solid #373737;
+    border-radius: 10px;
+}
+
+.shopItemImage {
+    width: 32px;
+    height: 32px;
+    border: 2px solid #373737;
+    border-radius: 32px;
+}
+
+.shopItemName {
+    position: absolute;
+    padding-top: 4%;
+    left: 20%;
+    font-size: 12px;
+}
+
+.shopItemCount {
+    position: absolute;
+    float: left;
+    padding-top: 4%;
+    left: 50%;
+    font-size: 12px;
+}
+
+.shopItemBuy {
+    position: absolute;
+    float: right;
+    padding-top: 4%;
+    right: 10%;
+    height: 50%;
+    font-size: 12px;
 }
 
 @media only screen and (min-width: 1501px) {
@@ -888,6 +932,12 @@
         background: url(../img/3/containers.png) -900px -516px;
     }
 
+    #enchant {
+        width: 387px;
+        height: 465px;
+        background: url('../img/3/containers.png') 0 0;
+    }
+
     #enchantSelectedItem, #enchantShards {
         width: 48px;
         height: 45px;
@@ -1004,6 +1054,18 @@
     #warp1.active, #warp2.active, #warp3.active, #warp4.active, #warp5.active, #warp6.active {
         background-position-y: -120px;
         -ms-background-position-y: -120px;
+    }
+
+    #shop {
+        width: 510px;
+        height: 504px;
+        background: url("../img/3/containers.png") -387px -66px;;
+    }
+
+    #shopInventoryContainer {
+        width: 387px;
+        height: 365px;
+        background: url("../img/3/containers.png") 0 0;;
     }
 
 }
@@ -1621,35 +1683,6 @@
         background: url("../img/2/containers.png") 0 0;;
     }
 
-    .shopItem {
-        width: 80%;
-        height: 20px;
-        border: 3px solid #373737;
-    }
-
-    .shopItemImage {
-        width: 32px;
-        height: 32px;
-        border: 1px solid #373737;
-    }
-
-    .shopItemName {
-        position: absolute;
-        left: 30%;
-        width: 30px;
-        height: 100%;
-        font-size: 12px;
-    }
-
-    .shopItemCount {
-        position: absolute;
-        float: left;
-        left: 50%;
-        width: 30px;
-        height: 100%;
-        font-size: 12px;
-    }
-
 }
 
 @media only screen and (max-width: 1000px) {
@@ -1773,7 +1806,7 @@
         background: url('../img/1/containers.png') -387px -79px;
     }
 
-    .ok, .done:hover {
+    .ok:hover, .done:hover {
         background: url('../img/1/containers.png') -387px -65px;
     }
 
@@ -2126,6 +2159,12 @@
         background: url(../img/1/containers.png) -300px -172px;
     }
 
+    #enchant {
+        width: 129px;
+        height: 155px;
+        background: url('../img/1/containers.png') 0 0;
+    }
+
     #enchantSelectedItem, #enchantShards {
         width: 16px;
         height: 15px;
@@ -2234,6 +2273,18 @@
     #warp1.active, #warp2.active, #warp3.active, #warp4.active, #warp5.active, #warp6.active {
         background-position-y: -40px;
         -ms-background-position-y: -40px;
+    }
+
+    #shop {
+        width: 170px;
+        height: 168px;
+        background: url("../img/1/containers.png") -129px -22px;;
+    }
+
+    #shopInventoryContainer {
+        width: 129px;
+        height: 155px;
+        background: url("../img/1/containers.png") 0 0;;
     }
 
 }

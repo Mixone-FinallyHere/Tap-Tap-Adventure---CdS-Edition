@@ -31,6 +31,40 @@ define(['jquery'], function($) {
             });
         },
 
+        resize: function() {
+            var self = this;
+
+            self.load();
+        },
+
+        load: function() {
+            var self = this,
+                list = self.getSlots(),
+                inventoryList = self.interface.bank.getInventoryList();
+
+            list.empty();
+
+            for (var i = 0; i < self.getInventorySize(); i++) {
+                var item = $(inventoryList[i]).clone(),
+                    slot = item.find('#bankInventorySlot' + i);
+
+                slot.click(function(event) {
+                    self.select(event);
+                });
+
+                list.append(item);
+            }
+
+            self.selectedItem.click(function() {
+                self.remove('item');
+            });
+
+            self.selectedShards.click(function() {
+                self.remove('shards');
+            });
+
+        },
+
         add: function(type, index) {
             var self = this,
                 image = self.getSlot(index).find('#inventoryImage' + index);
@@ -40,11 +74,17 @@ define(['jquery'], function($) {
 
                     self.selectedItem.css('background-image', image.css('background-image'));
 
+                    if (self.game.app.isMobile())
+                        self.selectedItem.css('background-size', '600%');
+
                     break;
 
                 case 'shards':
 
                     self.selectedShards.css('background-image', image.css('background-image'));
+
+                    if (self.game.app.isMobile())
+                        self.selectedShards.css('background-size', '600%');
 
                     var count = self.getItemSlot(index).count;
 
@@ -90,34 +130,6 @@ define(['jquery'], function($) {
 
                     break;
             }
-        },
-
-        load: function() {
-            var self = this,
-                list = self.getSlots(),
-                inventoryList = self.interface.bank.getInventoryList();
-
-            list.empty();
-
-            for (var i = 0; i < self.getInventorySize(); i++) {
-                var item = $(inventoryList[i]).clone(),
-                    slot = item.find('#bankInventorySlot' + i);
-
-                slot.click(function(event) {
-                    self.select(event);
-                });
-
-                list.append(item);
-            }
-
-            self.selectedItem.click(function() {
-                self.remove('item');
-            });
-
-            self.selectedShards.click(function() {
-                self.remove('shards');
-            });
-
         },
 
         enchant: function() {

@@ -114,7 +114,11 @@ module.exports = Incoming = cls.Class.extend({
 
                 case Packets.Crypto:
                     self.handleCrypto(message);
-                    break
+                    break;
+
+                case Packets.Shop:
+                    self.handleShop(message);
+                    break;
 
             }
 
@@ -804,6 +808,22 @@ module.exports = Incoming = cls.Class.extend({
             self.player.startCrypto();
         else
             self.player.stopCrypto();
+    },
+
+    handleShop: function(message) {
+        var self = this,
+            opcode = message.shift(),
+            shopId = message.shift();
+
+        switch (opcode) {
+            case Packets.ShopOpcode.Buy:
+                var buyId = message.shift(),
+                    amount = message.shift();
+
+                self.world.shops.buy(self.player, shopId, buyId, amount);
+
+                break;
+        }
     },
 
     canAttack: function(attacker, target) {
