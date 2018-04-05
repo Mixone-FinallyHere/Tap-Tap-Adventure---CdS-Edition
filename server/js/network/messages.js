@@ -138,7 +138,7 @@ Messages.Combat = Message.extend({
     },
 
     serialize: function() {
-        return [Packets.Combat, this.opcode, this.attackerId, this.targetId, this.hitData];
+        return [Packets.Combat, [this.opcode, this.attackerId, this.targetId, this.hitData]];
     }
 
 });
