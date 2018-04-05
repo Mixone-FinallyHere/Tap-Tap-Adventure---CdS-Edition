@@ -15,6 +15,7 @@ define(['jquery', './container/container'], function($, Container) {
             self.interface = intrface;
 
             self.container = null;
+            self.data = null;
 
             self.openShop = -1;
 
@@ -36,24 +37,20 @@ define(['jquery', './container/container'], function($, Container) {
 
         },
 
+        /**
+         * The shop file is already built to support full de-initialization of objects when
+         * we receive an update about the stocks. So we just use that whenever we want to resize.
+         * This is just a temporary fix, in reality, we do not want anyone to actually see the shop
+         * do a full refresh when they buy an item or someone else buys an item.
+         */
+
         resize: function() {
-            var self = this,
-                list = self.getShopList().find('li');
+            var self = this;
 
-            for (var i = 0; i < list.length; i++) {
-                var item = $(list[i]).find('#shopItemImage' + i),
-                    slot = self.container.slots[i];
+            self.getInventoryList().empty();
+            self.getShopList().empty();
 
-                if (!slot.string) {
-                    log.error('Couldn\'nt find string for slot at index: ' + i);
-                    continue;
-                }
-
-                if (self.game.app.isMobile())
-                    item.css('background-size', '600%');
-                else
-                    item.css('background-image', self.container.getImageFormat(self.getScale(), slot.string))
-            }
+            self.update(self.data);
         },
 
         update: function(data) {
@@ -63,11 +60,20 @@ define(['jquery', './container/container'], function($, Container) {
 
             self.container = new Container(data.strings.length);
 
+            //Update the global data to current revision
+            self.data = data;
+
+            self.load();
+        },
+
+        load: function() {
+            var self = this;
+
             for (var i = 0; i < self.container.size; i++) {
                 var shopItem = $('<div id="shopItem' + i + '" class="shopItem"></div>'),
-                    string = data.strings[i],
-                    name = data.names[i],
-                    count = data.counts[i],
+                    string = self.data.strings[i],
+                    name = self.data.names[i],
+                    count = self.data.counts[i],
                     itemImage, itemCount, itemName, itemBuy;
 
                 if (!string || !name || !count)

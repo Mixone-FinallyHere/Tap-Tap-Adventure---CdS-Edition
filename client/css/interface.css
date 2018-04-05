@@ -1068,6 +1068,18 @@
         background: url("../img/3/containers.png") 0 0;;
     }
 
+    .shopItemName {
+        font-size: 16px;
+    }
+
+    .shopItemCount {
+        font-size: 16px;
+    }
+
+    .shopItemBuy {
+        font-size: 16px;
+    }
+
 }
 
 @media only screen and (max-width: 1500px), only screen and (max-height: 870px) {
@@ -2285,6 +2297,37 @@
         width: 129px;
         height: 155px;
         background: url("../img/1/containers.png") 0 0;;
+    }
+
+    #shopContainer ul li {
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+
+    .shopItem {
+        width: 97%;
+        border: 2px solid #373737;
+    }
+
+    .shopItemImage {
+        width: 16px;
+        height: 16px;
+        border: 1px solid #373737;
+        border-radius: 16px;
+        -webkit-background-size: 600%;
+        background-size: 600%;
+    }
+
+    .shopItemName {
+        font-size: 6px;
+    }
+
+    .shopItemCount {
+        font-size: 6px;
+    }
+
+    .shopItemBuy {
+        font-size: 6px;
     }
 
 }
