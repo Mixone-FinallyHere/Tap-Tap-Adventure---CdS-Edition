@@ -49,7 +49,7 @@ define(['jquery', '../interface/inventory',
             if (self.enchant)
                 self.enchant.resize();
 
-            if (self.shop)
+            if (self.shop && self.shop.isVisible())
                 self.shop.resize();
 
         },
