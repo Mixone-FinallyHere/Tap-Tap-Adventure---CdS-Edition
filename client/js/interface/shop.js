@@ -47,6 +47,8 @@ define(['jquery', './container/container'], function($, Container) {
         resize: function() {
             var self = this;
 
+
+
             self.getInventoryList().empty();
             self.getShopList().empty();
 
