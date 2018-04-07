@@ -164,4 +164,16 @@ Packets.ShopOpcode = {
     Refresh: 3
 };
 
+Packets.MinigameOpcode = {
+    TeamWar: 1,
+
+    TeamWarOpcode: {
+        Enter: 0,
+        Team: 1,
+        Red: 2,
+        Blue: 3,
+        Leave: 4
+    }
+};
+
 module.exports = Packets;

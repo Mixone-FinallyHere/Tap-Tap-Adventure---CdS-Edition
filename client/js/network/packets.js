@@ -41,7 +41,8 @@ Packets = {
     Click: 39,
     Warp: 40,
     Crypto: 41,
-    Shop: 42
+    Shop: 42,
+    Minigame: 43
 };
 
 Packets.IntroOpcode = {
@@ -160,4 +161,16 @@ Packets.ShopOpcode = {
     Buy: 1,
     Sell: 2,
     Refresh: 3
+};
+
+Packets.MinigameOpcode = {
+    TeamWar: 1,
+
+    TeamWarOpcode: {
+        Enter: 0,
+        Team: 1,
+        Red: 2,
+        Blue: 3,
+        Leave: 4
+    }
 };
