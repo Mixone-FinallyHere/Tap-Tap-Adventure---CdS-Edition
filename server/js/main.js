@@ -155,17 +155,9 @@ function Main() {
                 new Bot(worlds[0], count);
 
                 break;
-
-            case 'test':
-
-                Utils.test();
-
-                break;
         }
 
     });
-
-    //log.info([[][[]]+[]][+[]][++[+[]][+[]]])
 
 }
 

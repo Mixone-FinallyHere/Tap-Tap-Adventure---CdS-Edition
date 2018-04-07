@@ -1099,6 +1099,10 @@ define(['./renderer/renderer', './utils/storage',
 
             });
 
+            self.messages.onMinigame(function(opcode, info) {
+                log.info('Lorem Ipsum.');
+            });
+
         },
 
         postLoad: function() {

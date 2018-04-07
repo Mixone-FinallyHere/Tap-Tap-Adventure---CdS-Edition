@@ -94,6 +94,7 @@ module.exports = Guilds = cls.Class.extend({
         if (newName.length > 18)
             return;
 
+
     },
 
     getData: function(guild) {

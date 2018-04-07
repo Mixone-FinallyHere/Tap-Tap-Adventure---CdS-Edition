@@ -34,7 +34,9 @@ module.exports = TeamWar = Minigame.extend({
     addToLobby: function(player) {
         var self = this;
 
+        self.lobby[player.instance] = player;
 
+        self.pushLobbyState(player, Packets.MinigameOpcode.TeamWarOpcode.Enter);
     },
 
     remove: function(player) {
@@ -59,7 +61,16 @@ module.exports = TeamWar = Minigame.extend({
 
         delete self.lobby[player.instance];
 
+        self.pushLobbyState(player, Packets.MinigameOpcode.TeamWarOpcode.Leave);
+    },
 
+    pushLobbyState: function(player, type) {
+        var self = this;
+
+        self.world.pushToGroup(player.group, Message.MinigameOpcode(Packets.MinigameOpcode.TeamWar, {
+            minigameOpcode: type,
+            id: player.instance
+        }))
     },
 
     inTeam: function(player, team) {
