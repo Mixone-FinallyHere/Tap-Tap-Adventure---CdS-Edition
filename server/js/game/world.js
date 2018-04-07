@@ -392,6 +392,15 @@ module.exports = World = cls.Class.extend({
             this.packets[player.instance].push(message.serialize());
     },
 
+    pushToPlayers: function(players, message, ignoreId) {
+        var self = this;
+
+        _.each(players, function(playerId) {
+            if (playerId !== ignoreId)
+                self.pushToPlayer(self.getEntityByInstance(playerId), message);
+        });
+    },
+
     pushToGroup: function(id, message, ignoreId) {
         var self = this,
             group = self.groups[id];

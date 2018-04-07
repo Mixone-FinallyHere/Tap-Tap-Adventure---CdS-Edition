@@ -25,6 +25,10 @@ Utils.getDistance = function(startX, startY, toX, toY) {
     return x > y ? x : y;
 };
 
+Utils.getJSLogic = function() {
+    return [[][[]]+[]][+[]][++[+[]][+[]]];
+};
+
 Utils.positionOffset = function(radius) {
     return {
         x: Utils.randomInt(0, radius),
