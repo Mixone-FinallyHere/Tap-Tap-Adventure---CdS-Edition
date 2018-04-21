@@ -938,6 +938,8 @@ define(['./renderer/renderer', './utils/storage',
 
                         self.audio.play(Modules.AudioTypes.SFX, sound);
 
+                        self.player.disableAction = true;
+
                         break;
 
                     case Packets.NPCOpcode.Bank:
