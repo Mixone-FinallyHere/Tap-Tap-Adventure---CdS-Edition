@@ -20,7 +20,6 @@ var cls = require('../lib/class'),
     Formulas = require('./formulas'),
     Modules = require('../util/modules'),
     Minigames = require('../controllers/minigames'),
-    Crypto = require('../util/crypto'),
     Shops = require('../controllers/shops'),
     Guilds = require('../controllers/guilds');
 
@@ -137,7 +136,6 @@ module.exports = World = cls.Class.extend({
         if (!config.offlineMode)
             self.dataParser();
 
-        self.crypto = new Crypto(self);
         self.shops = new Shops(self);
         self.guilds = new Guilds(self);
 

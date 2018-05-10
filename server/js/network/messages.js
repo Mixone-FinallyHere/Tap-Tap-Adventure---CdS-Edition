@@ -205,6 +205,18 @@ Messages.Chat = Message.extend({
 
 });
 
+Messages.Command = Message.extend({
+
+    init: function(data) {
+        this.data = data;
+    },
+
+    serialize: function() {
+        return [Packets.Command, this.data];
+    }
+
+});
+
 /**
  * Should we just have a packet that represents containers
  * as a whole or just send it separately for each?

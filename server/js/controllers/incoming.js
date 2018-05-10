@@ -820,7 +820,14 @@ module.exports = Incoming = cls.Class.extend({
                 var buyId = message.shift(),
                     amount = message.shift();
 
-                self.world.shops.buy(self.player, shopId, buyId, amount);
+                if (!buyId || !amount) {
+                    self.player.notify('Incorrect purchase relay.');
+                    return;
+                }
+
+                log.info('Received Buy: ' + buyId + ' ' + amount);
+
+                //self.world.shops.buy(self.player, shopId, buyId, amount);
 
                 break;
         }
