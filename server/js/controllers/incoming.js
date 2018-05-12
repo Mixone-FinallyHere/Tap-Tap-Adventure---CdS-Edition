@@ -112,10 +112,6 @@ module.exports = Incoming = cls.Class.extend({
                     self.handleWarp(message);
                     break;
 
-                case Packets.Crypto:
-                    self.handleCrypto(message);
-                    break;
-
                 case Packets.Shop:
                     self.handleShop(message);
                     break;
@@ -450,6 +446,12 @@ module.exports = Incoming = cls.Class.extend({
                     oEntity.combat.forceAttack();
 
                 break;
+
+            case Packets.MovementOpcode.Orientate:
+                var orientation = message.shift();
+                self.world.pushToAdjacentGroups(self.player.group, new Messages.Movement(Packets.MovementOpcode.Orientate, [self.player.instance, orientation]) );
+
+                break;
         }
     },
 
@@ -685,7 +687,7 @@ module.exports = Incoming = cls.Class.extend({
 
                     //Infinite stacks move all at onces, otherwise move one by one.
                     var moveAmount = Items.maxStackSize(bankSlot.id) === -1 ? bankSlot.count : 1;
-                    
+
                     if (self.player.inventory.add(bankSlot,moveAmount))
                         self.player.bank.remove(bankSlot.id, moveAmount, index);
 
@@ -794,20 +796,6 @@ module.exports = Incoming = cls.Class.extend({
 
         if (self.player.warp)
             self.player.warp.warp(id);
-    },
-
-    handleCrypto: function(message) {
-        var self = this,
-            instance = message.shift(),
-            enabled = message.shift();
-
-        if (instance !== self.player.instance)
-            return;
-
-        if (enabled)
-            self.player.startCrypto();
-        else
-            self.player.stopCrypto();
     },
 
     handleShop: function(message) {

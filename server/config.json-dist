@@ -1,3 +1,4 @@
+@@ -1,28 +0,0 @@
 {
   "name": "Tap Tap Adventure",
   "host": "0.0.0.0",
@@ -7,6 +8,7 @@
   "devClient": true,
   "development": false,
   "overrideAuth": false,
+  "debug": false,
 
   "mysqlHost": "127.0.0.1",
   "mysqlPort": 3306,
@@ -20,9 +22,6 @@
   "maxPlayers": 200,
   "gver": 2,
   "updateTime": 200,
-
-  "secretKey": "INSERT_BASE_62_KEY_HERE",
-  "crypto": false,
 
   "forceCollisions": false
 }
