@@ -199,20 +199,14 @@
     position: absolute;
     float: right;
     right: 10%;
-    top: 35%;
+    top: 41%;
 }
 
-#volume, #sfx, #brightness, #intensity {
+#volume, #sfx, #brightness {
     position: absolute;
 }
 
-#cryptoInfo {
-    position: absolute;
-    font-family: 'AdvoCut', sans-serif;
-    text-align: center;
-}
-
-#soundCheck, #cameraCheck, #debugCheck, #centreCheck, #nameCheck, #levelCheck, #cryptoCheck {
+#soundCheck, #cameraCheck, #debugCheck, #centreCheck, #nameCheck, #levelCheck {
     left: 50%;
 }
 
@@ -483,15 +477,16 @@
     display: inline-flex;
     width: 98%;
     height: 5%;
-    border: 3px solid #373737;
+    border: 3px solid rgba(255, 255, 0, 0.3);
     border-radius: 10px;
 }
 
 .shopItemImage {
     width: 32px;
     height: 32px;
-    border: 2px solid #373737;
-    border-radius: 32px;
+    border: 2px solid rgba(0, 0, 255, 0.3);
+    transform: scale(0.9);
+    border-radius: 100%;
 }
 
 .shopItemName {
@@ -505,17 +500,25 @@
     position: absolute;
     float: left;
     padding-top: 4%;
-    left: 50%;
+    left: 55%;
     font-size: 12px;
 }
 
 .shopItemBuy {
-    position: absolute;
-    float: right;
+    position: relative;
+    float: left;
+    border: 2px solid rgba(0, 255, 0, 0.3);
+    -webkit-border-radius: 30%;
+    -moz-border-radius: 30%;
+    border-radius: 30%;
     padding-top: 4%;
-    right: 10%;
-    height: 50%;
+    left: 65%;
     font-size: 12px;
+}
+
+.shopItemBuy:hover {
+    color: white;
+    cursor: pointer;
 }
 
 @media only screen and (min-width: 1501px) {
@@ -788,18 +791,6 @@
         top: 108px;
     }
 
-    #intensity {
-        top: 459px;
-    }
-
-    #cryptoInfo {
-        width: 354px;
-        height: 36px;
-        top: 597px;
-        left: 2%;
-        font-size: 24px;
-    }
-
     #checkMarks {
         width: 120px;
         height: 210px;
@@ -812,7 +803,7 @@
     }
 
     #texts p {
-        margin-bottom: 21px;
+        margin-bottom: 36px;
     }
 
     .check {
@@ -839,31 +830,27 @@
     }
 
     #soundCheck {
-        top: 3px;
+        top: 9px;
     }
 
     #cameraCheck {
-        top: 51px;
+        top: 69px;
     }
 
     #debugCheck {
-        top: 96px;
+        top: 132px;
     }
 
     #centreCheck {
-        top: 138px;
+        top: 186px;
     }
 
     #nameCheck {
-        top: 183px;
+        top: 246px;
     }
 
     #levelCheck {
-        top: 221px;
-    }
-
-    #cryptoCheck {
-        top: 279px;
+        top: 306px;
     }
 
     #attackInfo {
@@ -1388,27 +1375,15 @@
     }
 
     #volume {
-        top: 2px;
+        top: 3px;
     }
 
     #sfx {
-        top: 30px;
+        top: 40px;
     }
 
     #brightness {
-        top: 60px;
-    }
-
-    #intensity {
-        top: 306px;
-    }
-
-    #cryptoInfo {
-        width: 236px;
-        height: 24px;
-        top: 398px;
-        left: 2%;
-        font-size: 14px;
+        top: 82px;
     }
 
     #checkMarks {
@@ -1423,7 +1398,7 @@
     }
 
     #texts p {
-        margin-bottom: 14px;
+        margin-bottom: 24px;
     }
 
     .check {
@@ -1450,31 +1425,27 @@
     }
 
     #soundCheck {
-        top: 2px;
+        top: 6px;
     }
 
     #cameraCheck {
-        top: 34px;
+        top: 46px;
     }
 
     #debugCheck {
-        top: 64px;
+        top: 88px;
     }
 
     #centreCheck {
-        top: 92px;
+        top: 124px;
     }
 
     #nameCheck {
-        top: 122px;
+        top: 164px;
     }
 
     #levelCheck {
-        top: 154px;
-    }
-
-    #cryptoCheck {
-        top: 186px;
+        top: 204px;
     }
 
     #attackInfo {
@@ -2018,23 +1989,11 @@
     }
 
     #sfx {
-        top: 14px;
+        top: 20px;
     }
 
     #brightness {
-        top: 30px;
-    }
-
-    #intensity {
-        top: 152px;
-    }
-
-    #cryptoInfo {
-        width: 118px;
-        height: 12px;
-        top: 199px;
-        left: 2%;
-        font-size: 10px;
+        top: 41px;
     }
 
     #checkMarks {
@@ -2051,7 +2010,7 @@
     }
 
     #texts p {
-        margin-bottom: 7px;
+        margin-bottom: 12px;
     }
 
     .check {
@@ -2078,31 +2037,27 @@
     }
 
     #soundCheck {
-        top: 2px;
+        top: 3px;
     }
 
     #cameraCheck {
-        top: 18px;
+        top: 23px;
     }
 
     #debugCheck {
-        top: 32px;
+        top: 44px;
     }
 
     #centreCheck {
-        top: 46px;
+        top: 62px;
     }
 
     #nameCheck {
-        top: 61px;
+        top: 82px;
     }
 
     #levelCheck {
-        top: 77px;
-    }
-
-    #cryptoCheck {
-        top: 93px;
+        top: 102px;
     }
 
     #attackInfo {
@@ -2300,20 +2255,20 @@
     }
 
     #shopContainer ul li {
-        padding-top: 2px;
-        padding-bottom: 2px;
+        padding-top: 1px;
+        padding-bottom: 1px;
     }
 
     .shopItem {
         width: 97%;
-        border: 2px solid #373737;
+        border: 1.5px solid rgba(255, 255, 0, 0.3);
+        border-radius: 7px;
     }
 
     .shopItemImage {
         width: 16px;
         height: 16px;
-        border: 1px solid #373737;
-        border-radius: 16px;
+        border: 1px solid rgba(0, 0, 255, 0.3);
         -webkit-background-size: 600%;
         background-size: 600%;
     }
@@ -2327,6 +2282,11 @@
     }
 
     .shopItemBuy {
+        position: relative;
+        float: left;
+        border: 1px solid rgba(0, 255, 0, 0.3);
+        padding-top: 4%;
+        left: 65%;
         font-size: 6px;
     }
 

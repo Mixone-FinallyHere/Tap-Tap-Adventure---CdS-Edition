@@ -28,7 +28,7 @@ define(['jquery', './container/container'], function($, Container) {
             var self = this,
                 id = event.currentTarget.id.substring(11);
 
-            self.game.socket.send(Packets.Shop, [Packets.ShopOpcode.Buy, id]);
+            self.game.socket.send(Packets.Shop, [Packets.ShopOpcode.Buy, id, 1, 1]);
         },
 
         sell: function() {
@@ -46,8 +46,6 @@ define(['jquery', './container/container'], function($, Container) {
 
         resize: function() {
             var self = this;
-
-
 
             self.getInventoryList().empty();
             self.getShopList().empty();
@@ -89,6 +87,7 @@ define(['jquery', './container/container'], function($, Container) {
                 itemImage.css('background-image', self.container.getImageFormat(self.getScale(), string));
                 itemCount.html(count);
                 itemName.html(name);
+                itemBuy.html('Purchase');
 
                 self.container.setSlot(i, {
                     string: string,
@@ -102,7 +101,7 @@ define(['jquery', './container/container'], function($, Container) {
 
                 var listItem = $('<li></li>');
 
-                shopItem.append(itemImage, itemCount, itemName);
+                shopItem.append(itemImage, itemCount, itemName, itemBuy);
 
                 listItem.append(shopItem);
 
