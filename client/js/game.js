@@ -6,11 +6,10 @@ define(['./renderer/renderer', './utils/storage',
         './entity/character/player/playerhandler', './utils/pathfinder',
         './controllers/zoning', './controllers/info', './controllers/bubble',
         './controllers/interface', './controllers/audio', './controllers/pointer',
-        './controllers/crypto',
         './utils/modules', './network/packets'],
         function(Renderer, LocalStorage, Map, Socket, Player, Updater,
                  Entities, Input, PlayerHandler, Pathfinder, Zoning, Info,
-                 Bubble, Interface, Audio, Pointer, Crypto) {
+                 Bubble, Interface, Audio, Pointer) {
 
     return Class.extend({
 
@@ -35,7 +34,6 @@ define(['./renderer/renderer', './utils/storage',
             self.info = null;
             self.interface = null;
             self.audio = null;
-            self.crypto = null;
 
             self.player = null;
 
@@ -679,6 +677,7 @@ define(['./renderer/renderer', './utils/storage',
                  * a specific action done by the client as opposed to
                  * packet-oriented ones.
                  */
+
             });
 
             self.messages.onInventory(function(opcode, info) {
@@ -1204,30 +1203,6 @@ define(['./renderer/renderer', './utils/storage',
                 self.storage.save();
             }
 
-            if (self.storage.data.crypto && !self.renderer.mobile) {
-                self.storage.data.crypto = false;
-                self.storage.save();
-
-                setTimeout(function() {
-
-                    self.app.body.addClass('ask');
-
-                }, 1500);
-            }
-        },
-
-        loadCrypto: function() {
-            var self = this;
-
-            if (!self.crypto)
-                self.setCrypto(new Crypto(self));
-
-            self.crypto.start();
-
-            self.socket.send(Packets.Crypto, [self.player.id, true]);
-
-            if (self.renderer.mobile)
-                self.input.chatHandler.add('WORLD', 'Warning - Crypto mining causes an extreme battery drain on mobile devices.');
         },
 
         implementStorage: function() {
@@ -1464,11 +1439,6 @@ define(['./renderer/renderer', './utils/storage',
         setAudio: function(audio) {
             if (!this.audio)
                 this.audio = audio;
-        },
-
-        setCrypto: function(crypto) {
-            if (!this.crypto)
-                this.crypto = crypto;
         }
 
     });
