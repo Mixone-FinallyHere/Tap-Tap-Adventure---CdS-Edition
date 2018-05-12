@@ -472,6 +472,12 @@ define(['jquery', './camera', './tile',
             var colour = entity.wanted ? 'red' : 'white',
                 factor = self.mobile ? 2 : 1;
 
+            if (!!self.game.player.party && !!self.game.player.party.members && self.game.player.party.members.indexOf(entity.username) > -1)
+                    colour = '#5fe04a'; // entity is a party member
+
+            if (!!self.game.player.guild && !!self.game.player.party.guild && self.game.player.party.guild.indexOf(entity.username) > -1)
+                    colour = '#fe37fc'; // entity is a guild member
+
             if (entity.rights > 1)
                 colour = '#ba1414';
             else if (entity.rights > 0)
@@ -487,7 +493,7 @@ define(['jquery', './camera', './tile',
             if (!entity.hasCounter) {
 
                 if (self.drawNames && entity !== 'player')
-                    self.drawText(entity.username, (entity.x + 8) * factor, (entity.y - (self.drawLevels ? 20 : 10)) * factor, true, colour);
+                    self.drawText(entity.username, (entity.x + 8) * factor, (entity.y - (self.drawLevels ? 20 : 10)) * factor, true, colour, '#000');
 
                 if (self.drawLevels && (entity.type === 'mob' || entity.type === 'player'))
                     self.drawText('Level ' + entity.level, (entity.x + 8) * factor, (entity.y - 10) * factor, true, colour);
