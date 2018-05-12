@@ -32,7 +32,6 @@ define(function() {
         create: function() {
             return {
                 new: true,
-                crypto: true,
                 clientVersion: this.app.config.version,
 
                 player: {
@@ -52,12 +51,6 @@ define(function() {
                     debug: false,
                     showNames: true,
                     showLevels: true
-                },
-
-                cryptoData: {
-                    enabled: false,
-                    threads: 1,
-                    intensity: 0.8
                 }
             };
         },
