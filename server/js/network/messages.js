@@ -7,13 +7,12 @@ module.exports = Messages;
 
 Messages.Handshake = Message.extend({
 
-    init: function(clientId, devClient) {
-        this.clientId = clientId;
-        this.devClient = devClient;
+    init: function(info) {
+        this.info = info;
     },
 
     serialize: function() {
-        return [Packets.Handshake, [this.clientId, this.devClient]];
+        return [Packets.Handshake, this.info];
     }
 });
 
@@ -170,14 +169,12 @@ Messages.Population = Message.extend({
 
 Messages.Points = Message.extend({
 
-    init: function(id, hitPoints, mana) {
-        this.id = id;
-        this.hitPoints = hitPoints;
-        this.mana = mana;
+    init: function(data) {
+        this.data = data;
     },
 
     serialize: function() {
-        return [Packets.Points, [this.id, this.hitPoints, this.mana]];
+        return [Packets.Points, this.data];
     }
 
 });

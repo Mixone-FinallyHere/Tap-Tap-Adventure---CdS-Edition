@@ -90,7 +90,10 @@ module.exports = World = cls.Class.extend({
 
             self.addToPackets(player);
 
-            self.pushToPlayer(player, new Messages.Handshake(clientId, config.devClient));
+            self.pushToPlayer(player, new Messages.Handshake({
+                id: clientId,
+                development: config.devClient
+            }));
 
         });
 
@@ -223,7 +226,12 @@ module.exports = World = cls.Class.extend({
 
         entity.applyDamage(entity.hitPoints);
 
-        self.pushToAdjacentGroups(entity.group, new Messages.Points(entity.instance, entity.getHitPoints(), null));
+        self.pushToAdjacentGroups(entity.group, new Messages.Points({
+            id: entity.instance,
+            hitPoints: entity.getHitPoints(),
+            mana: null
+        }));
+
         self.pushToAdjacentGroups(entity.group, new Messages.Despawn(entity.instance));
 
         self.handleDeath(entity, true);
@@ -242,7 +250,12 @@ module.exports = World = cls.Class.extend({
 
         target.hit(attacker);
         target.applyDamage(damage);
-        self.pushToAdjacentGroups(target.group, new Messages.Points(target.instance, target.getHitPoints(), null));
+
+        self.pushToAdjacentGroups(target.group, new Messages.Points({
+            id: target.instance,
+            hitPoints: target.getHitPoints(),
+            mana: null
+        }));
 
         // If target has died...
         if (target.getHitPoints() < 1) {
