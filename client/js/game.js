@@ -1201,7 +1201,10 @@ define(['./renderer/renderer', './utils/storage',
             var defaultSprite = self.getSprite(self.player.getSpriteName());
 
             self.player.setSprite(defaultSprite);
+            self.player.setOrientation(self.storage.data.player.orientation);
             self.player.idle();
+
+            log.info('Player Orientation: ' + self.player.orientation);
 
             self.socket.send(Packets.Ready, [true]);
 
