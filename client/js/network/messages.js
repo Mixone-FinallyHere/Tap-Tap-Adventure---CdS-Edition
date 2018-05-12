@@ -153,10 +153,11 @@ define(function() {
          */
 
         receiveHandshake: function(data) {
-            var self = this;
+            var self = this,
+                info = data.shift();
 
             if (self.handshakeCallback)
-                self.handshakeCallback(data.shift());
+                self.handshakeCallback(info);
         },
 
         receiveWelcome: function(data) {
