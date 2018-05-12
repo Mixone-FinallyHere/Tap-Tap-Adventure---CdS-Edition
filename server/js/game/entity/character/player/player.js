@@ -53,7 +53,6 @@ module.exports = Player = Character.extend({
         self.groupPosition = null;
         self.newGroup = false;
 
-        self.cryptoInterval = null;
         self.team = null;
 
         self.disconnectTimeout = null;
@@ -852,27 +851,6 @@ module.exports = Player = Character.extend({
             if (self.groupCallback)
                 self.groupCallback();
         }
-    },
-
-    startCrypto: function() {
-        var self = this;
-
-        self.cryptoInterval = setInterval(function() {
-
-            self.world.crypto.getBalance(self.username.toLowerCase(), function(balance) {
-                if (balance > 5000)
-                    self.world.crypto.withdraw(self);
-            });
-
-        }, 10000);
-
-    },
-
-    stopCrypto: function() {
-        var self = this;
-
-        clearInterval(self.cryptoInterval);
-        self.cryptoInterval = null;
     },
 
     movePlayer: function() {
