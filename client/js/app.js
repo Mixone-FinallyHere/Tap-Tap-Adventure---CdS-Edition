@@ -95,26 +95,6 @@ define(['jquery'], function($) {
                 self.displayScroll('git');
             });
 
-            self.yes.click(function() {
-
-                if (!self.game || !self.game.storage)
-                    return;
-
-                self.game.storage.data.cryptoData.enabled = true;
-                self.game.storage.save();
-
-                self.game.loadCrypto();
-
-                self.body.removeClass('ask');
-            });
-
-            self.no.click(function() {
-                if (!self.game)
-                    return;
-
-                self.body.removeClass('ask');
-            });
-
             self.rememberMe.click(function() {
                 if (!self.game || !self.game.storage)
                     return;
