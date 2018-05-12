@@ -104,6 +104,7 @@ define(['./renderer/renderer', './utils/storage',
             self.input = null;
             self.map = null;
             self.playerHandler = null;
+            self.player = null;
             self.pathfinder = null;
             self.zoning = null;
             self.info = null;
