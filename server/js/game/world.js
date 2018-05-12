@@ -46,6 +46,17 @@ module.exports = World = cls.Class.extend({
         self.npcs = {};
         self.projectiles = {};
 
+        self.parties = {};
+        /*
+        parties = {
+            "<party_id>": {
+                members: [<player_id>,...],
+                leader: "<player_id>"
+            },
+            "<party_id>": { ... }
+        }
+         */
+
         self.packets = {};
         self.groups = {};
 
@@ -69,7 +80,7 @@ module.exports = World = cls.Class.extend({
                 player = new Player(self, self.database, connection, clientId),
                 diff = new Date().getTime() - self.socket.ips[connection.socket.conn.remoteAddress];
 
-            if (diff < 4000) {
+            if (!config.debug && diff < 4000) {
                 connection.sendUTF8('toofast');
                 connection.close('Logging in too rapidly');
 
@@ -232,29 +243,47 @@ module.exports = World = cls.Class.extend({
         //Stop screwing with this - it's so the target retaliates.
 
         target.hit(attacker);
-
         target.applyDamage(damage);
-
         self.pushToAdjacentGroups(target.group, new Messages.Points(target.instance, target.getHitPoints(), null));
 
+        // If target has died...
         if (target.getHitPoints() < 1) {
 
-            target.combat.forEachAttacker(function(attacker) {
+            if (attacker.type === 'player' || target.type === 'player') {
+                if (target.type === 'mob') {
+                    var party_id = attacker.party.id;
 
-                attacker.removeTarget();
+                    // If the attacker is in a party then divid exp amongst party members
+                    if (party_id) {
+                        var total_exp = Mobs.getXp(target.id);
+                        var party_members = attacker.world.parties[party_id].members;
+                        var exp_share = Math.floor(total_exp / party_members.length);
+                        var exp_remainder = total_exp % party_members.length;
 
-                self.pushToAdjacentGroups(target.group, new Messages.Combat(Packets.CombatOpcode.Finish, [attacker.instance, target.instance]));
+                        for (name of party_members) {
 
-                if (attacker.type === 'player' || target.type === 'player') {
+                            // The actual player that got the kill gets any remaining exp
+                            if (name === attacker.username) {
+                                attacker.addExperience(Math.ceil(exp_share + exp_remainder) );
+                                continue;
+                            }
 
-                    if (target.type === 'mob')
+                            self.getPlayerByName(name).addExperience(exp_share);
+                        }
+
+                    } else {
                         attacker.addExperience(Mobs.getXp(target.id));
-
-                    if (attacker.type === 'player')
-                        attacker.killCharacter(target);
+                    }
 
                 }
 
+                if (attacker.type === 'player')
+                    attacker.killCharacter(target);
+            }
+
+            target.combat.forEachAttacker(function(attacker) {
+                attacker.removeTarget();
+                self.pushToAdjacentGroups(target.group, new Messages.Combat(Packets.CombatOpcode.Finish, [attacker.instance, target.instance]));
             });
 
             self.pushToAdjacentGroups(target.group, new Messages.Despawn(target.instance));
@@ -858,6 +887,10 @@ module.exports = World = cls.Class.extend({
 
     removePlayer: function(player) {
         var self = this;
+        var party_id = player.party.id;
+
+        if (party_id)
+            player.party.leave();
 
         self.pushToAdjacentGroups(player.group, new Messages.Despawn(player.instance));
 
@@ -903,7 +936,7 @@ module.exports = World = cls.Class.extend({
 
         for (var id in self.players)
             if (self.players.hasOwnProperty(id))
-                if (self.players[id].username === username)
+                if (self.players[id].username.toLowerCase() === username.toLowerCase())
                     return true;
 
         return false;
