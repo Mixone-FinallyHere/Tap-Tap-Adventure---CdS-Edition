@@ -63,10 +63,11 @@ Packets.MovementOpcode = {
     Step: 2,
     Stop: 3,
     Move: 4,
-    Follow: 5,
-    Entity: 6,
-    Freeze: 7,
-    Stunned: 8
+    Orientate: 5,
+    Follow: 6,
+    Entity: 7,
+    Freeze: 8,
+    Stunned: 9
 };
 
 Packets.TargetOpcode = {
