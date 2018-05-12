@@ -383,7 +383,7 @@ Messages.Guild = Message.extend({
     },
 
     serialize: function() {
-        return [Packets.Enchant, this.opcode, this.info];
+        return [Packets.Guild, this.opcode, this.info];
     }
 
 });
