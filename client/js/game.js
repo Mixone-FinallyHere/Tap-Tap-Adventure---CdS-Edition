@@ -205,8 +205,8 @@ define(['./renderer/renderer', './utils/storage',
 
             self.messages.onHandshake(function(data) {
 
-                self.id = data.shift();
-                self.development = data.shift();
+                self.id = data.id;
+                self.development = data.development;
 
                 self.ready = true;
 
@@ -635,23 +635,29 @@ define(['./renderer/renderer', './utils/storage',
             });
 
             self.messages.onPoints(function(data) {
-                var id = data.shift(),
-                    hitPoints = data.shift(),
-                    mana = data.shift(),
-                    entity = self.entities.get(id);
+                log.info(data);
+
+                var entity = self.entities.get(data.id);
+
+                //var id = data.shift(),
+                //    hitPoints = data.shift(),
+                //    mana = data.shift(),
+                //    entity = self.entities.get(id);
 
                 if (!entity)
                     return;
 
-                if (hitPoints) {
-                    entity.setHitPoints(hitPoints);
+                log.info('passes this');
+
+                if (data.hitPoints) {
+                    entity.setHitPoints(data.hitPoints);
 
                     if (self.player.hasTarget() && self.player.target.id === entity.id && self.input.overlay.updateCallback)
-                        self.input.overlay.updateCallback(entity.id, hitPoints);
+                        self.input.overlay.updateCallback(entity.id, data.hitPoints);
                 }
 
-                if (mana)
-                    entity.setMana(mana);
+                if (data.mana)
+                    entity.setMana(data.mana);
             });
 
             self.messages.onNetwork(function() {
