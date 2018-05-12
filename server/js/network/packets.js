@@ -42,7 +42,8 @@ var Packets = {
     Warp: 40,
     Crypto: 41,
     Shop: 42,
-    Minigame: 43
+    Minigame: 43,
+    Party: 44
 };
 
 Packets.IntroOpcode = {
@@ -174,6 +175,15 @@ Packets.MinigameOpcode = {
         Blue: 3,
         Leave: 4
     }
+};
+
+Packets.PartyOpcode = {
+  Invite: 0,
+  Accept: 1,
+  Leave: 2,
+  Kick: 3,
+  Update: 4,
+  Chat: 5
 };
 
 module.exports = Packets;

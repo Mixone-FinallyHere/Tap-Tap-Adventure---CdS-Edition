@@ -62,3 +62,7 @@ Utils.validPacket = function(packet) {
 
     return packet > -1 && packet < Packets[filtered[filtered.length - 1]] + 1;
 };
+
+Utils.getCurrentEpoch = function() {
+    return (new Date).getTime();
+}
