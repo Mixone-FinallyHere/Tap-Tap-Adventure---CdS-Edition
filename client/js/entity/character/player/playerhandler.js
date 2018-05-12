@@ -79,6 +79,8 @@ define(function() {
 
                 self.input.setPassiveTarget();
 
+                self.game.storage.setOrientation(self.player.orientation);
+
             });
 
             self.player.onBeforeStep(function() {

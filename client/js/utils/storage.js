@@ -21,8 +21,6 @@ define(function() {
             else
                 self.data = self.create();
 
-            log.info(storage.data);
-
             if (self.data.clientVersion !== self.app.config.version) {
                 self.data = self.create();
                 self.save();
@@ -38,7 +36,8 @@ define(function() {
                     username: '',
                     password: '',
                     autoLogin: false,
-                    rememberMe: false
+                    rememberMe: false,
+                    orientation: Modules.Orientation.Down
                 },
 
                 settings: {
@@ -69,6 +68,15 @@ define(function() {
             var self = this;
 
             self.data.player.rememberMe = toggle;
+            self.save();
+        },
+
+        setOrientation: function(orientation) {
+            var self = this,
+                player = self.getPlayer();
+
+            player.orientation = orientation;
+
             self.save();
         },
 
