@@ -399,6 +399,17 @@ define(['./renderer/renderer', './utils/storage',
                             pEntity.frozen = state;
 
                         break;
+
+
+                        case Packets.MovementOpcode.Orientate:
+                            var player = info.shift(),
+                                orientation = info.shift(),
+                                entity = self.entities.get(player);
+
+                            // entity.stop();
+                            entity.performAction(orientation, Modules.Actions.Orientate);
+
+                        break;
                 }
 
             });

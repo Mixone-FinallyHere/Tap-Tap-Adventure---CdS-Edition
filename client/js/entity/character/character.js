@@ -184,6 +184,10 @@ define(['../entity', '../../utils/transition', '../animation'], function(Entity,
                     self.animate('idle', self.idleSpeed);
                     break;
 
+                case Modules.Actions.Orientate:
+                    self.animate('idle', self.idleSpeed);
+                    break;
+
                 case Modules.Actions.Attack:
                     self.animate('atk', self.attackAnimationSpeed, 1);
                     break;

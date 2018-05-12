@@ -446,6 +446,12 @@ module.exports = Incoming = cls.Class.extend({
                     oEntity.combat.forceAttack();
 
                 break;
+
+            case Packets.MovementOpcode.Orientate:
+                var orientation = message.shift();
+                self.world.pushToAdjacentGroups(self.player.group, new Messages.Movement(Packets.MovementOpcode.Orientate, [self.player.instance, orientation]) );
+
+                break;
         }
     },
 

@@ -1,0 +1,27 @@
+@@ -1,28 +0,0 @@
+{
+  "name": "Tap Tap Adventure",
+  "host": "0.0.0.0",
+  "port": 1800,
+
+  "offlineMode": false,
+  "devClient": true,
+  "development": false,
+  "overrideAuth": false,
+  "debug": false,
+
+  "mysqlHost": "127.0.0.1",
+  "mysqlPort": 3306,
+  "mysqlUser": "root",
+  "mysqlPassword": "password",
+  "mysqlDatabase": "database",
+
+  "debugLevel": "info",
+  "localDebug": false,
+  "worlds": 1,
+  "maxPlayers": 200,
+  "gver": 2,
+  "updateTime": 200,
+
+  "forceCollisions": false
+}
