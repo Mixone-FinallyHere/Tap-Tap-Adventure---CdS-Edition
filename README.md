@@ -32,7 +32,6 @@ Let us start out with this small list:
 - Controllers: Both the client and the server side contain a folder named `controllers`. The name is pretty self explanatory, this controls important functions of the game.
 - Quest System: The quest controller encompasses both achievements and quests, both have been created in a plugin format and allow for manipulation of server events. Achievements are far more simplistic in nature, consisting of minor tasks and small rewards.
 - Plugin System: Expands upon the controllers and combat and allows direct control over individual items.
-- Crypto: Allows the player to choose whether or not they would like to contribute, in the event they do, they will be rewarded EXP. This is not to say that AFK'ing will be allowed.
 
 
 
