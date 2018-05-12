@@ -395,7 +395,7 @@ Messages.Guild = Message.extend({
     },
 
     serialize: function() {
-        return [Packets.Enchant, this.opcode, this.info];
+        return [Packets.Guild, this.opcode, this.info];
     }
 
 });
@@ -448,6 +448,19 @@ Messages.Minigame = Message.extend({
 
     serialize: function() {
         return [Packets.Shop, this.opcode, this.info];
+    }
+
+});
+
+Messages.Party = Message.extend({
+
+    init: function(opcode, info) {
+        this.opcode = opcode;
+        this.info = info;
+    },
+
+    serialize: function() {
+        return [Packets.Party, this.opcode, this.info];
     }
 
 });
