@@ -159,6 +159,8 @@ define(['jquery', '../entity/animation', './chat', './overlay'], function($, Ani
 
                     case Modules.InputType.LeftClick:
 
+                        player.disableAction = false;
+
                         self.setCoords(data);
                         self.click(self.getCoords());
 
