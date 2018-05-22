@@ -9,7 +9,8 @@ var fs = require('fs'),
     Log = require('log'),
     worlds = [], database,
     Bot = require('../../tools/bot/bot'),
-    Utils = require('./util/utils');
+    Utils = require('./util/utils'),
+    Request = require('request');
 
 var worldsCreated = 0;
 
@@ -153,6 +154,26 @@ function Main() {
                     count = 1;
 
                 new Bot(worlds[0], count);
+
+                break;
+
+            case 'expost':
+
+                var postData = {
+                    method: 'POST',
+                    uri: 'http://127.0.0.1:3000/webhooks/eth',
+                    form: {
+                        type: 'transaction',
+                        hash: '0x0d1a7c73736f3940f799191368e75da0e95a8f015db1c83c61c50f2e36156283'
+                    }
+                };
+
+                Request(postData, function(error, response, body) {
+
+                    log.info(error);
+                    log.info(body);
+
+                });
 
                 break;
         }
