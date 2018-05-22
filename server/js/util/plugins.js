@@ -1,5 +1,5 @@
 var fs = require('fs'),
-    Filter = /^([^\.].*)\.js$/;
+    Filter = /^([^\\.].*)\.js$/;
 
 function identity(val) {
     return val;

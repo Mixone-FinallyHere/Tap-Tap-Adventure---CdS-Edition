@@ -1118,68 +1118,6 @@ define(['./renderer/renderer', './utils/storage',
                 log.info('Lorem Ipsum.');
             });
 
-
-            self.messages.onParty(function(opcode, info) {
-
-                switch (opcode) {
-                    case Packets.PartyOpcode.Invite:
-                        self.input.chatHandler.add("[PARTY]", `You have been invited to join ${info}'s party.
-                        Type '/party accept' to join, or '/party decline' to reject the invitation.`);
-                        break;
-
-                    case Packets.PartyOpcode.Accept:
-                        if (info === self.player.username) {
-                            self.input.chatHandler.add("[PARTY]", "You have joined the party.");
-                        } else {
-                            self.input.chatHandler.add("[PARTY]", `${info} has joined the party.`);
-                        }
-
-                        break;
-
-                    case Packets.PartyOpcode.Leave:
-                        if (info === self.player.username) {
-                            // If the target was us, then clear our party data.
-                            self.player.party.leader = null;
-                            self.player.party.members = [];
-                            self.input.chatHandler.add("[PARTY]", "You have left the party.");
-                        } else {
-                            self.input.chatHandler.add("[PARTY]", `${info} has left the party.`);
-                        }
-
-                        break;
-
-                    case Packets.PartyOpcode.Kick:
-                        if (info === self.player.username) {
-                            // If the target was us, then clear our party data.
-                            self.player.party.leader = null;
-                            self.player.party.members = [];
-                            self.input.chatHandler.add("[PARTY]", "You were kicked out of the party.");
-                        } else {
-                            self.input.chatHandler.add("[PARTY]", `${info} was kicked from party by ${self.player.party.leader}.`);
-                        }
-                        break;
-
-                    case Packets.PartyOpcode.Chat:
-                        self.input.chatHandler.add("[PARTY]", `${info}`);
-                        break;
-
-                    case Packets.PartyOpcode.Update:
-                        var new_leader = info.shift();
-                            all_members = info.shift();
-
-                        // Party leader has changed, and this is NOT the first leader of a new party
-                        if (self.player.party && self.player.party.leader && new_leader !== self.player.party.leader) {
-                            self.input.chatHandler.add("[PARTY]", `${new_leader} is now the party leader.`);
-                        }
-
-                        self.player.party.leader = new_leader;
-                        self.player.party.members = all_members;
-
-                        break;
-                }
-
-            });
-
         },
 
         postLoad: function() {

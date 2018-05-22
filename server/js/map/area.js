@@ -57,10 +57,6 @@ module.exports = Area = cls.Class.extend({
 
     },
 
-    isFull: function() {
-        return this.entities.length >= this.maxEntities;
-    },
-
     setMaxEntities: function(maxEntities) {
         this.maxEntities = maxEntities;
     },

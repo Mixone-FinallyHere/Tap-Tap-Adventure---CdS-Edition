@@ -33,7 +33,6 @@ module.exports = Map = cls.Class.extend({
         self.width = map.width;
         self.height = map.height;
         self.collisions = map.collisions;
-        self.bossAreas = map.bossAreas;
         self.roamingAreas = map.roamingAreas;
         self.chestAreas = map.chestAreas;
         self.chests = map.chests;

@@ -65,4 +65,4 @@ Utils.validPacket = function(packet) {
 
 Utils.getCurrentEpoch = function() {
     return (new Date).getTime();
-}
+};

@@ -448,16 +448,3 @@ Messages.Minigame = Message.extend({
     }
 
 });
-
-Messages.Party = Message.extend({
-
-    init: function(opcode, info) {
-        this.opcode = opcode;
-        this.info = info;
-    },
-
-    serialize: function() {
-        return [Packets.Party, this.opcode, this.info];
-    }
-
-});
