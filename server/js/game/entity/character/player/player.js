@@ -25,8 +25,7 @@ var Character = require('../character'),
     Hit = require('../combat/hit'),
     Trade = require('./trade'),
     Warp = require('./warp'),
-    Guild = require('./guild'),
-    Party = require('./party');
+    Guild = require('./guild')
 
 module.exports = Player = Character.extend({
 
@@ -80,8 +79,6 @@ module.exports = Player = Character.extend({
         self.canTalk = true;
 
         self.profileDialogOpen = false;
-
-        self.party = new Party(self);
 
     },
 

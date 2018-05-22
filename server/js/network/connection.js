@@ -12,15 +12,11 @@ module.exports = Connection = cls.Class.extend({
         self._server = server;
     },
 
-    broadcast: function(message) {
+    send: function() {
         throw 'Invalid initialization.'
     },
 
-    send: function(message) {
-        throw 'Invalid initialization.'
-    },
-
-    sendUTF8: function(data) {
+    sendUTF8: function() {
         throw 'Invalid initialization.'
     },
 

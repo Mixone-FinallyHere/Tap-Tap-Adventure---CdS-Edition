@@ -43,16 +43,6 @@ define(['../character', './equipment/armour', './equipment/weapon',
 
             self.loadEquipment();
 
-            self.guild = {
-                "name": null, // {String} Guild name
-                "tag": null, // {String} Short tag name for guild. Limit to 3-4 chars?
-                "title": null, // {String} Current players custom guild title
-            };
-
-            self.party = {
-                "leader": null, // {String} Username of current party leader
-                "members": [] // [{String}] Array of usernames of all party members
-            };
         },
 
         load: function(data) {

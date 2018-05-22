@@ -112,7 +112,8 @@ module.exports = Parser = cls.Class.extend({
                 healsMana: value.healsMana ? value.healsMana : 0,
                 maxStackSize: value.maxStackSize ? value.maxStackSize : -1,
                 plugin: value.plugin ? value.plugin : null,
-                customData: value.customData ? value.customData : null
+                customData: value.customData ? value.customData : null,
+                requirement: value.requirement ? value.requirement : null
             };
 
             Items.Ids[value.id] = Items.Data[key];

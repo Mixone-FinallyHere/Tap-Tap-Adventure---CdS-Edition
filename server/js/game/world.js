@@ -19,7 +19,6 @@ var cls = require('../lib/class'),
     Packets = require('../network/packets'),
     Formulas = require('./formulas'),
     Modules = require('../util/modules'),
-    Minigames = require('../controllers/minigames'),
     Shops = require('../controllers/shops'),
     Guilds = require('../controllers/guilds');
 
@@ -46,15 +45,6 @@ module.exports = World = cls.Class.extend({
         self.projectiles = {};
 
         self.parties = {};
-        /*
-        parties = {
-            "<party_id>": {
-                members: [<player_id>,...],
-                leader: "<player_id>"
-            },
-            "<party_id>": { ... }
-        }
-         */
 
         self.packets = {};
         self.groups = {};
@@ -261,36 +251,13 @@ module.exports = World = cls.Class.extend({
         if (target.getHitPoints() < 1) {
 
             if (attacker.type === 'player' || target.type === 'player') {
-                if (target.type === 'mob') {
-                    var party_id = attacker.party.id;
-
-                    // If the attacker is in a party then divid exp amongst party members
-                    if (party_id) {
-                        var total_exp = Mobs.getXp(target.id);
-                        var party_members = attacker.world.parties[party_id].members;
-                        var exp_share = Math.floor(total_exp / party_members.length);
-                        var exp_remainder = total_exp % party_members.length;
-
-                        for (name of party_members) {
-
-                            // The actual player that got the kill gets any remaining exp
-                            if (name === attacker.username) {
-                                attacker.addExperience(Math.ceil(exp_share + exp_remainder) );
-                                continue;
-                            }
-
-                            self.getPlayerByName(name).addExperience(exp_share);
-                        }
-
-                    } else {
-                        attacker.addExperience(Mobs.getXp(target.id));
-                    }
-
-                }
+                if (target.type === 'mob')
+                    attacker.addExperience(Mobs.getXp(target.id));
 
                 if (attacker.type === 'player')
                     attacker.killCharacter(target);
             }
+
 
             target.combat.forEachAttacker(function(attacker) {
                 attacker.removeTarget();
@@ -335,7 +302,7 @@ module.exports = World = cls.Class.extend({
             character.die();
     },
 
-    createProjectile: function(info, hitInfo) {
+    createProjectile: function(info) {
         var self = this,
             attacker = info.shift(),
             target = info.shift();
@@ -410,6 +377,10 @@ module.exports = World = cls.Class.extend({
      * messages to the player(s)
      */
 
+    /**
+     * Broadcasts a message to everyone online
+     */
+
     pushBroadcast: function(message) {
         var self = this;
 
@@ -417,6 +388,10 @@ module.exports = World = cls.Class.extend({
             packet.push(message.serialize());
         });
     },
+
+    /**
+     * Broadcasts to everyone, with the option to ignore
+     */
 
     pushSelectively: function(message, ignores) {
         var self = this;
@@ -427,19 +402,31 @@ module.exports = World = cls.Class.extend({
         });
     },
 
+    /**
+     * Pushes a message to a single player
+     */
+
     pushToPlayer: function(player, message) {
         if (player && player.instance in this.packets)
             this.packets[player.instance].push(message.serialize());
     },
 
+    /**
+     * Specify an array of player instances to send a message to
+     */
+
     pushToPlayers: function(players, message, ignoreId) {
         var self = this;
 
-        _.each(players, function(playerId) {
-            if (playerId !== ignoreId)
-                self.pushToPlayer(self.getEntityByInstance(playerId), message);
+        _.each(players, function(instance) {
+            if (instance !== ignoreId)
+                self.pushToPlayer(self.getEntityByInstance(instance), message);
         });
     },
+
+    /**
+     * Sends a message to the group the entity is currently in
+     */
 
     pushToGroup: function(id, message, ignoreId) {
         var self = this,
@@ -454,6 +441,13 @@ module.exports = World = cls.Class.extend({
         });
     },
 
+    /**
+     * Sends a message to all the surrounding groups of the player.
+     * G  G  G
+     * G  P  G
+     * G  G  G
+     */
+
     pushToAdjacentGroups: function(groupId, message, ignoreId) {
         var self = this;
 
@@ -461,6 +455,10 @@ module.exports = World = cls.Class.extend({
             self.pushToGroup(id, message, ignoreId);
         });
     },
+
+    /**
+     * Sends a message to the group the player just left from
+     */
 
     pushToOldGroups: function(player, message) {
         var self = this;
@@ -471,6 +469,10 @@ module.exports = World = cls.Class.extend({
 
         player.recentGroups = [];
     },
+
+    /**
+     * Sends a message to an array of player names
+     */
 
     pushToNameArray: function(array, message) {
         var self = this;
@@ -687,15 +689,12 @@ module.exports = World = cls.Class.extend({
 
 
     createItem: function(id, instance, x, y) {
-        var self = this;
-
         var item;
 
         if (Items.hasPlugin(id))
             item = new (Items.isNewPlugin(id))(id, instance, x, y);
         else
             item = new Item(id, instance, x, y);
-
 
         return item;
     },
@@ -898,10 +897,6 @@ module.exports = World = cls.Class.extend({
 
     removePlayer: function(player) {
         var self = this;
-        var party_id = player.party.id;
-
-        if (party_id)
-            player.party.leave();
 
         self.pushToAdjacentGroups(player.group, new Messages.Despawn(player.instance));
 
