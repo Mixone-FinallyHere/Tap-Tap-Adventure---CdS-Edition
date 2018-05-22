@@ -74,8 +74,8 @@ define(['jquery', '../entity/animation', './chat', './overlay'], function($, Ani
         },
 
         handle: function(inputType, data) {
-            var self = this;
-            let player = self.getPlayer();
+            var self = this,
+                player = self.getPlayer();
 
             switch(inputType) {
                 case Modules.InputType.Key:

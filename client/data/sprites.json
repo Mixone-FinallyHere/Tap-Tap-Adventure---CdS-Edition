@@ -535,6 +535,7 @@
   },
   {
     "id": "bat",
+    "idleSpeed": 100,
     "width": 32,
     "height": 48,
     "animations": {
@@ -2706,6 +2707,7 @@
     "id": "crab",
     "width": 32,
     "height": 32,
+    "idleSpeed": 300,
     "animations": {
       "death": {
         "length": 8,
@@ -13286,6 +13288,7 @@
     "id": "rat",
     "width": 48,
     "height": 48,
+    "idleSpeed": 200,
     "animations": {
       "death": {
         "length": 4,
