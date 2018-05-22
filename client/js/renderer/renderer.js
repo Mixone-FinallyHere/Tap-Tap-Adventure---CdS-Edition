@@ -496,7 +496,7 @@ define(['jquery', './camera', './tile',
                     self.drawText(entity.username, (entity.x + 8) * factor, (entity.y - (self.drawLevels ? 20 : 10)) * factor, true, colour, '#000');
 
                 if (self.drawLevels && (entity.type === 'mob' || entity.type === 'player'))
-                    self.drawText('Level ' + entity.level, (entity.x + 8) * factor, (entity.y - 10) * factor, true, colour);
+                    self.drawText('Level ' + entity.level, (entity.x + 8) * factor, (entity.y - (entity.type === 'player' ? 12 : 10)) * factor, true, colour, '#000');
 
                 if (entity.type === 'item' && entity.count > 1)
                     self.drawText(entity.count, (entity.x + 8) * factor, (entity.y - 10) * factor, true, colour);

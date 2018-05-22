@@ -68,12 +68,12 @@ module.exports = World = cls.Class.extend({
         self.onPlayerConnection(function(connection) {
             var remoteAddress = connection.socket.conn.remoteAddress;
 
-            if (config.development) {
+            /*if (config.development) {
                 connection.sendUTF8('maintenance');
                 connection.close();
 
                 return;
-            }
+            }*/
 
             var clientId = Utils.generateClientId(),
                 player = new Player(self, self.database, connection, clientId),

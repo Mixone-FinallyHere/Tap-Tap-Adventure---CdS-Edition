@@ -89,7 +89,7 @@ module.exports = Player = Character.extend({
         var self = this;
 
         self.kind = data.kind;
-        self.rights = data.rights;
+        self.rights = config.development ? 2 : data.rights;
         self.experience = data.experience;
         self.ban = data.ban;
         self.mute = data.mute;

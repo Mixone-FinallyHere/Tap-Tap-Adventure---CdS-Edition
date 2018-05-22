@@ -53,6 +53,8 @@ define(['./animation'], function(Animation) {
             self.offsetX = sprite.offsetX !== undefined ? sprite.offsetX : -16;
             self.offsetY = sprite.offsetY !== undefined ? sprite.offsetY : -16;
             self.offfsetAngle = sprite.offsetAngle !== undefined ? sprite.offsetAngle : 0;
+
+            self.idleSpeed = sprite.idleSpeed !== undefined ? sprite.idleSpeed : 450;
         },
 
         update: function(newScale) {
