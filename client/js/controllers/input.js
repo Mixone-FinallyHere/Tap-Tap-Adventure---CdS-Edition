@@ -90,14 +90,6 @@ define(['jquery', '../entity/animation', './chat', './overlay'], function($, Ani
                         case Modules.Keys.W:
                         case Modules.Keys.Up:
 
-                            if (player.orientation !== Modules.Orientation.Up) {
-                                player.stop();
-                                player.performAction(Modules.Orientation.Up, Modules.Actions.Orientate);
-
-                                self.game.socket.send(Packets.Movement, [Packets.MovementOpcode.Orientate, Modules.Orientation.Up]);
-
-                                break;
-                            }
                             self.getPlayer().moveUp = true;
 
                             break;
@@ -105,14 +97,6 @@ define(['jquery', '../entity/animation', './chat', './overlay'], function($, Ani
                         case Modules.Keys.A:
                         case Modules.Keys.Left:
 
-                            if (player.orientation !== Modules.Orientation.Left) {
-                                player.stop();
-                                player.performAction(Modules.Orientation.Left, Modules.Actions.Orientate);
-
-                                self.game.socket.send(Packets.Movement, [Packets.MovementOpcode.Orientate, Modules.Orientation.Left]);
-
-                                break;
-                            }
                             self.getPlayer().moveLeft = true;
 
                             break;
@@ -120,14 +104,6 @@ define(['jquery', '../entity/animation', './chat', './overlay'], function($, Ani
                         case Modules.Keys.S:
                         case Modules.Keys.Down:
 
-                            if (player.orientation !== Modules.Orientation.Down) {
-                                player.stop();
-                                player.performAction(Modules.Orientation.Down, Modules.Actions.Orientate);
-
-                                self.game.socket.send(Packets.Movement, [Packets.MovementOpcode.Orientate, Modules.Orientation.Down]);
-
-                                break;
-                            }
                             self.getPlayer().moveDown = true;
 
                             break;
@@ -135,14 +111,6 @@ define(['jquery', '../entity/animation', './chat', './overlay'], function($, Ani
                         case Modules.Keys.D:
                         case Modules.Keys.Right:
 
-                            if (player.orientation !== Modules.Orientation.Right) {
-                                player.stop();
-                                player.performAction(Modules.Orientation.Right, Modules.Actions.Orientate);
-
-                                self.game.socket.send(Packets.Movement, [Packets.MovementOpcode.Orientate, Modules.Orientation.Right]);
-
-                                break;
-                            }
                             self.getPlayer().moveRight = true;
 
                             break;

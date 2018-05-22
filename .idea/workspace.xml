@@ -4,7 +4,6 @@
     <list default="true" id="c48d7ea8-5c56-4f6b-afdb-8c04901f739b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/js/controllers/input.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/js/controllers/input.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/js/controllers/incoming.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/js/controllers/incoming.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/js/main.js" afterDir="false" />
     </list>
     <ignored path="Tap-Tap-Adventure.iws" />
@@ -27,8 +26,8 @@
       <file leaf-file-name="config.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/config.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="16" column="62" selection-start-line="16" selection-start-column="62" selection-end-line="16" selection-end-column="62" />
+            <state relative-caret-position="140">
+              <caret line="10" column="15" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -36,7 +35,7 @@
       <file leaf-file-name="chat.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/js/controllers/chat.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-161">
+            <state>
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -47,8 +46,8 @@
       <file leaf-file-name="input.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/js/controllers/input.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="161" column="53" selection-start-line="161" selection-start-column="53" selection-end-line="161" selection-end-column="53" />
+            <state relative-caret-position="233">
+              <caret line="93" lean-forward="true" selection-start-line="93" selection-end-line="93" />
             </state>
           </provider>
         </entry>
@@ -153,12 +152,12 @@
         <option value="$PROJECT_DIR$/server/js/network/messages.js" />
         <option value="$PROJECT_DIR$/server/js/main.js" />
         <option value="$PROJECT_DIR$/server/js/game/entity/character/player/player.js" />
-        <option value="$PROJECT_DIR$/client/data/config.json" />
         <option value="$PROJECT_DIR$/client/js/utils/storage.js" />
         <option value="$PROJECT_DIR$/client/js/entity/character/player/playerhandler.js" />
         <option value="$PROJECT_DIR$/client/js/game.js" />
         <option value="$PROJECT_DIR$/server/config.json" />
         <option value="$PROJECT_DIR$/server/js/controllers/incoming.js" />
+        <option value="$PROJECT_DIR$/client/data/config.json" />
         <option value="$PROJECT_DIR$/client/js/controllers/input.js" />
       </list>
     </option>
@@ -182,9 +181,9 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="211" />
+    <option name="x" value="16" />
     <option name="y" value="22" />
-    <option name="width" value="1063" />
+    <option name="width" value="1258" />
     <option name="height" value="778" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -214,7 +213,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -249,20 +247,6 @@
             <path>
               <item name="Tap-Tap-Adventure" type="b2602c69:ProjectViewProjectNode" />
               <item name="Tap-Tap-Adventure" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="network" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Tap-Tap-Adventure" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Tap-Tap-Adventure" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Tap-Tap-Adventure" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Tap-Tap-Adventure" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -286,6 +270,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -640,14 +625,8 @@
       <workItem from="1526137903097" duration="3351000" />
       <workItem from="1526410822561" duration="579000" />
       <workItem from="1526535547546" duration="9000" />
-      <workItem from="1526914966200" duration="231000" />
-    </task>
-    <task id="LOCAL-00028" summary="Convention Fix &amp; Start on Shops">
-      <created>1508804991536</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1508804991536</updated>
+      <workItem from="1526914966200" duration="454000" />
+      <workItem from="1526952010662" duration="802000" />
     </task>
     <task id="LOCAL-00029" summary="Quick Fix">
       <created>1508805346478</created>
@@ -985,27 +964,34 @@
       <option name="project" value="LOCAL" />
       <updated>1526142714595</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="Fixes NPC Clicking &amp; Moves API to the Configuration">
+      <created>1526915270723</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1526915270726</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="754460000" />
+    <option name="totallyTimeSpent" value="755485000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="211" y="22" width="1063" height="778" extended-state="0" />
+    <frame x="16" y="22" width="1258" height="778" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26434618" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22337043" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.38287863" side_tool="true" visible="true" weight="0.28835228" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.38394275" side_tool="true" visible="true" weight="0.28835228" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32905984" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49670744" weight="0.328125" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49764818" weight="0.328125" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.61712134" visible="true" weight="0.28835228" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.6160572" visible="true" weight="0.28835228" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -1035,7 +1021,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Hit Callback for Players" />
     <MESSAGE value="Combat Formula" />
     <MESSAGE value="New armour, de-hardcoded `drawEntityFore`, adds special attacks, stunning animations, weapon requirements, new handlers," />
     <MESSAGE value="Fixes bug where chests were replaced with a pickle" />
@@ -1060,7 +1045,8 @@
     <MESSAGE value="Removing Crypto" />
     <MESSAGE value="Some Packet Conventions" />
     <MESSAGE value="Local Storage to save Player Orientation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Local Storage to save Player Orientation" />
+    <MESSAGE value="Fixes NPC Clicking &amp; Moves API to the Configuration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixes NPC Clicking &amp; Moves API to the Configuration" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1328,13 +1314,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/data/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/js/network/messages.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1793">
@@ -1398,32 +1377,36 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="14">
           <caret line="128" column="43" selection-start-line="128" selection-start-column="32" selection-end-line="128" selection-end-column="43" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="16" column="62" selection-start-line="16" selection-start-column="62" selection-end-line="16" selection-end-column="62" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/js/controllers/chat.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-161">
+        <state>
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/data/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="10" column="15" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/js/controllers/input.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="161" column="53" selection-start-line="161" selection-start-column="53" selection-end-line="161" selection-end-column="53" />
+        <state relative-caret-position="233">
+          <caret line="93" lean-forward="true" selection-start-line="93" selection-end-line="93" />
         </state>
       </provider>
     </entry>
