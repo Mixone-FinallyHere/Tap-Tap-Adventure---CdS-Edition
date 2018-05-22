@@ -16,7 +16,7 @@ module.exports = Warp = cls.Class.extend({
     warp: function(id) {
         var self = this;
 
-        if (!self.canWarp()) {
+        if (!self.isCooldown()) {
             self.player.notify('You must wait another ' + self.getDuration() + ' to warp.');
             return;
         }
@@ -31,7 +31,9 @@ module.exports = Warp = cls.Class.extend({
             y = data[3] ? data[2] + Utils.randomInt(0, 1) : data[2],
             levelRequirement = data[4];
 
-        if (self.player.level < levelRequirement) {
+        log.info('Player Rights: ' + self.player.rights);
+
+        if (self.hasRequirement()) {
             self.player.notify('You must be at least level ' + levelRequirement + ' to warp here!');
             return;
         }
@@ -54,8 +56,12 @@ module.exports = Warp = cls.Class.extend({
 
     },
 
-    canWarp: function() {
+    isCooldown: function() {
         return this.getDifference() > this.warpTimeout || this.player.rights > 1;
+    },
+
+    hasRequirement: function(levelRequirement) {
+        return this.player.level < levelRequirement || !this.player.rights > 1;
     },
 
     getDuration: function() {

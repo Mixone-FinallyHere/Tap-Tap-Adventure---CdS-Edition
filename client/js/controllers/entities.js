@@ -198,10 +198,14 @@ define(['../renderer/grids', '../entity/objects/chest',
                 if (!entity)
                     return;
 
+                var sprite = self.getSprite(info.type === 'item' ? 'item-' + info.string : info.string);
+
                 entity.setGridPosition(info.x, info.y);
                 entity.setName(info.name);
 
-                entity.setSprite(self.getSprite(info.type === 'item' ? 'item-' + info.string : info.string));
+                entity.setSprite(sprite);
+
+                entity.setIdleSpeed(sprite.idleSpeed);
 
                 entity.idle();
                 entity.type = info.type;

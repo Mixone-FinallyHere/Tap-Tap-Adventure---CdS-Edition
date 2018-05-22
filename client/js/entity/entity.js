@@ -23,6 +23,7 @@ define(['./entityhandler'], function(EntityHandler) {
 
             self.animations = null;
             self.currentAnimation = null;
+            self.idleSpeed = 450;
 
             self.shadowOffsetY = 0;
             self.hidden = false;
@@ -170,6 +171,10 @@ define(['./entityhandler'], function(EntityHandler) {
 
         setVisible: function(visible) {
             this.visible = visible
+        },
+
+        setIdleSpeed: function(idleSpeed) {
+            this.idleSpeed = idleSpeed;
         },
 
         hasWeapon: function() {

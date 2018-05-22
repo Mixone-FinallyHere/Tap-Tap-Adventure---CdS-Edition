@@ -41,7 +41,6 @@ define(['../entity', '../../utils/transition', '../animation'], function(Entity,
 
             self.movement = new Transition();
 
-            self.idleSpeed = 450;
             self.attackAnimationSpeed = 50;
             self.walkAnimationSpeed = 100;
             self.movementSpeed = 250;
@@ -562,6 +561,10 @@ define(['../entity', '../../utils/transition', '../animation'], function(Entity,
 
             if (self.hitPointsCallback)
                 self.hitPointsCallback(self.hitPoints);
+        },
+
+        setIdleSpeed: function(idleSpeed) {
+            this._super(idleSpeed);
         },
 
         setMaxHitPoints: function (maxHitPoints) {
