@@ -41,14 +41,6 @@ module.exports = ChestAreas = cls.Class.extend({
         log.info('Loaded ' + self.chestAreas.length + ' chest areas.');
     },
 
-    standardize: function() {
-        var self = this;
-
-        _.each(self.chestAreas, function(chestArea) {
-            chestArea.setMaxEntities(chestArea.entities.length);
-        });
-    },
-
     spawnChest: function(chestArea) {
         var self = this;
 

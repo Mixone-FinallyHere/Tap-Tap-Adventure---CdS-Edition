@@ -8,9 +8,7 @@ var fs = require('fs'),
     ShutdownHook = require('shutdown-hook'),
     Log = require('log'),
     worlds = [], database,
-    Bot = require('../../tools/bot/bot'),
-    Utils = require('./util/utils'),
-    Request = require('request');
+    Bot = require('../../tools/bot/bot');
 
 var worldsCreated = 0;
 
@@ -65,14 +63,6 @@ function Main() {
 
     }, 200);
 
-    webSocket.onRequestStatus(function() {
-        return JSON.stringify(getPopulations());
-    });
-
-    webSocket.onError(function() {
-        log.notice('Web Socket has encountered an error.');
-    });
-
     /**
      * We want to generate worlds after the socket
      * has finished initializing.
@@ -86,7 +76,7 @@ function Main() {
         shutdownHook.register();
     });
 
-    shutdownHook.on('ShutdownStarted', function(e) {
+    shutdownHook.on('ShutdownStarted', function() {
         saveAll();
     });
 

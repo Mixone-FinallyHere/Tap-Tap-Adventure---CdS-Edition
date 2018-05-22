@@ -58,7 +58,6 @@ define(function() {
             self.messages[Packets.PVP] = self.receivePVP;
             self.messages[Packets.Shop] = self.receiveShop;
             self.messages[Packets.Minigame] = self.receiveMinigame;
-            self.messages[Packets.Party] = self.receiveParty;
 
         },
 
@@ -442,15 +441,6 @@ define(function() {
                 self.minigameCallback(opcode, info);
         },
 
-        receiveParty: function(data) {
-            var self = this,
-                opcode = data.shift(),
-                info = data.shift();
-
-            if (self.partyCallback)
-                self.partyCallback(opcode, info);
-        },
-
         /**
          * Universal Callbacks
          */
@@ -593,10 +583,6 @@ define(function() {
 
         onMinigame: function(callback) {
             this.minigameCallback = callback;
-        },
-
-        onParty: function(callback) {
-            this.partyCallback = callback;
         }
 
     });

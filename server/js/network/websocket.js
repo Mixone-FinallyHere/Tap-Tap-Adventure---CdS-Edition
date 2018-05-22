@@ -66,19 +66,10 @@ WebSocket.Server = Socket.extend({
         return '1' + Utils.random(99) + '' + this._counter++;
     },
 
-    broadcast: function(message) {
-        this.forEachConnection(function(connection) {
-            connection.send(message);
-        });
-    },
-
     onConnect: function(callback) {
         this.connectionCallback = callback;
-    },
-
-    onRequestStatus: function(callback) {
-        this.statusCallback = callback;
     }
+
 });
 
 WebSocket.Connection = Connection.extend({

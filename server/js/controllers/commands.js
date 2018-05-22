@@ -37,67 +37,6 @@ module.exports = Commands = cls.Class.extend({
 
         switch(command) {
 
-            case 'party':
-            var command = blocks.shift();
-
-            if (command === 'invite') {
-                var targetName = blocks.join(' ');
-
-                if (!self.world.playerInWorld(targetName)) {
-                    self.player.send(new Messages.Notification(Packets.NotificationOpcode.Text, 'Player "'+targetName+'" is not online.'));
-                    return;
-                }
-
-                var invitee = self.world.getPlayerByName(targetName);
-                self.player.party.invite(invitee)
-
-            } else if (command === 'decline') {
-
-                self.player.party.decline();
-
-            } else if (command === 'accept') {
-
-                var targetName = blocks.join(' ');
-                var inviter = self.world.getPlayerByName(targetName);
-
-                self.player.party.accept();
-
-            } else if (command === 'leave') {
-
-                self.player.party.leave()
-
-            } else if (command == 'list') {
-
-                self.player.party.list()
-
-            } else if (command === 'kick') {
-                var party_id = self.player.party.id
-                var targetName = blocks.shift();
-
-                // We not in a party, or target is not in our party
-                if (!party_id || self.world.parties[party_id].members.indexOf(targetName) < 0)
-                return;
-
-                var victim = self.world.getPlayerByName(targetName);
-
-                self.player.party.kick(victim)
-                // self.player.send(new Messages.Notification(Packets.NotificationOpcode.Text, 'You have kicked ' +victim+ ' from the party.'));
-            } else {
-                self.player.send(new Messages.Party(Packets.PartyOpcode.Chat, `Party Commands:`));
-                self.player.send(new Messages.Party(Packets.PartyOpcode.Chat, `  /party - Shows this message`));
-                self.player.send(new Messages.Party(Packets.PartyOpcode.Chat, `  /party invite <player> - Invites player to party`));
-                self.player.send(new Messages.Party(Packets.PartyOpcode.Chat, `  /party accept - Accept a party invitation`));
-                self.player.send(new Messages.Party(Packets.PartyOpcode.Chat, `  /party decline - Decline a party invitation`));
-                self.player.send(new Messages.Party(Packets.PartyOpcode.Chat, `  /party leave - Leave the current party`));
-                self.player.send(new Messages.Party(Packets.PartyOpcode.Chat, `  /party kick <player> - Kicks a player from the party`));
-                self.player.send(new Messages.Party(Packets.PartyOpcode.Chat, `  /party list - Lists all the current party members`));
-
-            }
-
-            // self.player.send(new Messages.Notification(Packets.NotificationOpcode.Text, 'There are currently ' + self.world.getPopulation() + ' online.'));
-
-            break;
-
             case 'players':
 
                 self.player.send(new Messages.Notification(Packets.NotificationOpcode.Text, 'There are currently ' + self.world.getPopulation() + ' online.'));
