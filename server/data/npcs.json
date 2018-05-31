@@ -13,7 +13,7 @@
 
   "Villager": {
     "id": 2,
-    "name": "Bulk Bogan",
+    "name": "Mister Baptise",
     "text": ["Thank you kindly for the help, dear adventurer.", "I will ensure to contact you in the",
           "nearby future regarding further adventures."]
   },
@@ -85,10 +85,10 @@
 
   "Coder": {
     "id": 17,
-    "name": "Programmer",
+    "name": "Miguel Terol",
     "text": ["Oh.. This is awkward...", "You may be wondering why I'm here as well.", "Well just letting you know..",
-            "It's definitely not because we're running low on pixel art..", "Regardless.. If you want to join the community",
-            "Our Discord <a target=\"_blank\" href=\"https://discord.gg/8MPSFW4\">is available here!</a>"]
+            "It's definitely not because we're running low on pixel art..", "Regardless.. If you want to help out",
+            "You can contact Miguel and offer your help!"]
   },
 
   "ForestNpc": {

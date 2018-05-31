@@ -2,27 +2,27 @@
   "The Knack Of": {
     "id": 0,
     "name": "A Great Start",
-    "description": "Teaching you the basics about Tap Tap Adventure!",
+    "description": "Teaching you the basics about Tap Tap Adventure - CdS Edition!",
     "npcs": [17, 8],
     "stages": 5,
     "conversations": {
       "17": {
-        "0": ["Hello there!", "Welcome to Maearth.",
+        "0": ["Hello there!", "Welcome to ULB.",
               "I do not wish to keep you for too long",
               "So let us proceed with a quick tutorial."],
         "1": ["See that spooky arrow? You should click it.", "Trust me.. It's really the only way to progress...",
-              "Come on man.. Just do it please..", "I don't have a lot of time and there are other newbies here."],
+              "Come on man.. Just do it please..", "I don't have a lot of time and there are other ba1 here."],
 
         "2": ["Alright perfect, clearly you are capable of clicking things.", "This is the character menu.",
               "It is pretty self explanatory so I do not want to drag this tutorial.",
               "Please go to the next instructor to finish your quick tutorial."],
 
-        "3": ["Farewell Adventurer!"]
+        "3": ["Farewell Student!"]
       },
 
       "8": {
-        "4": ["Oh, another one. Here, take this sword and get outta here.",
-          "I would bother teaching you but", "It is more fun to let newbies figure it out."
+        "4": ["Oh, another one. Here, take this pen and get outta here.",
+          "I would bother teaching you but", "It is more fun to let ba1s figure it out."
         ],
 
         "5": ["Go through the portal there to get to the main land."]

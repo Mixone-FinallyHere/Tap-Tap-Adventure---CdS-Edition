@@ -163,46 +163,52 @@ module.exports = Incoming = cls.Class.extend({
         self.introduced = true;
 
         if (isRegistering) {
-            var registerOptions = {
-                method: 'GET',
-                uri: config.register_api + '?a=' + '9a4c5ddb-5ce6-4a01-a14f-3ae49d8c6507' + '&u=' + self.player.username + '&p=' + self.player.password + '&e=' + self.player.email
-            };
+            if (self.player.username.toLowerCase() == self.player.password.toLowerCase()) {
+                self.connection.sendUTF8('error');
+                self.connection.close("Password and Username can't be the same !");
+            } else {
+                var registerOptions = {
+                    method: 'GET',
+                    uri: config.register_api + '?a=9a4c5ddb-5ce6-4a01-a14f-3ae49d8c6507' + '&u=' + self.player.username + '&p=' + self.player.password + '&e=' + self.player.email
+                };
 
-            Request(registerOptions, function(error, response, body) {
-                try {
-                    var data = JSON.parse(JSON.parse(body).data);
+                Request(registerOptions, function(error, response, body) {
+                    console.log("Error : " + error +"\nResponse : "+response+"\nBody : "+body);
+                    try {        
+                        var data = JSON.stringify(response);            
 
-                    switch (data.code) {
-                        case 'ok':
-                            self.mysql.register(self.player);
-                            break;
+                        switch (data.statusCode) {
+                            case 200:
+                                self.mysql.register(self.player);
+                                break;
 
-                        case 'internal-server-error': //email
+                            case 500: //email
 
-                            self.connection.sendUTF8('emailexists');
-                            self.connection.close('Email not available.');
-                            break;
+                                self.connection.sendUTF8('emailexists');
+                                self.connection.close('Email not available.');
+                                break;
 
-                        case 'not-authorised': //username
+                            case 401: //username
 
-                            self.connection.sendUTF8('userexists');
-                            self.connection.close('Username not available.');
-                            break;
+                                self.connection.sendUTF8('userexists');
+                                self.connection.close('Username not available.');
+                                break;
 
-                        default:
+                            default:
 
-                            self.connection.sendUTF8('error');
-                            self.connection.close('Unknown API Response: ' + error);
-                            break;
+                                self.connection.sendUTF8('error');
+                                self.connection.close('Unknown API Response: ' + error);
+                                break;
+                        }
+
+                    } catch (e) {
+                        log.info('Could not decipher API message');
+
+                        self.connection.sendUTF8('disallowed');
+                        self.connection.close('API response is malformed!')
                     }
-
-                } catch (e) {
-                    log.info('Could not decipher API message');
-
-                    self.connection.sendUTF8('disallowed');
-                    self.connection.close('API response is malformed!')
-                }
-            });
+                });
+            }
 
         } else if (isGuest) {
 
@@ -218,12 +224,13 @@ module.exports = Incoming = cls.Class.extend({
                 method: 'POST',
                 uri: config.login_api,
                 form: {
-                    'username': self.player.username.toLowerCase(),
+                    'username': self.player.username,
                     'password': self.player.password
                 }
             };
 
             Request(loginOptions, function(error, response, body) {
+                console.log("Response : "+response+"\nBody : "+JSON.stringify(response));
                 var data;
 
                 /**
@@ -235,7 +242,7 @@ module.exports = Incoming = cls.Class.extend({
                  */
 
                 try {
-                    data = JSON.parse(body);
+                    data = JSON.parse(JSON.stringify(response));
 
                 } catch (e) {
                     log.info('Could not decipher API message');
