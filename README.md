@@ -1,4 +1,4 @@
-# Tap Tap Adventure
+# Tap Tap Adventure - Cercle des Sciences Edition
 
 Tap Tap Adventure - Cercle des Sciences Edition (TTA-CdS) is a massively multi-player online open-source project based on Tap Tap Adventure.
 
