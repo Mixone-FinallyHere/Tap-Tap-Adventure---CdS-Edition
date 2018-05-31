@@ -1,9 +1,3 @@
-client-build
-node_modules
-cordova
-.idea
-.DS_Store
-dump.rdb
-client/less
+server/login_api/
 server/config.json
 client/data/config.json
